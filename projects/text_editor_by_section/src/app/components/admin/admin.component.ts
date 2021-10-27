@@ -1,12 +1,20 @@
-import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Inject
+} from '@angular/core';
 import { GameService } from '../../services/game.service';
 import { take, withLatestFrom } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
 import { Item } from '../table/table.component';
 import { Subscription } from 'rxjs';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA
+} from '@angular/material/dialog';
 import { GoogleSheetService } from '../../services/google-sheet.service';
-
 
 @Component({
   selector: 'anms-admin',
@@ -15,12 +23,34 @@ import { GoogleSheetService } from '../../services/google-sheet.service';
 })
 export class AdminComponent implements OnInit {
   name: any;
-  dataSource:MatTableDataSource<String>;
-  dataSource_propositions:MatTableDataSource<String>;
+  dataSource: MatTableDataSource<String>;
+  dataSource_propositions: MatTableDataSource<String>;
   users: String[];
-  displayedColumns: string[] = ['name1','txt1',"graph","plus1","egale1","moins1","button1"];
-  displayedColumns2: string[] =  ['name1','txt1',"graph","plus1","egale1","moins1","button1"];;
-  displayedColumns3: string[] = ['name3',"plus3","egale3","moins3","delete3"];
+  displayedColumns: string[] = [
+    'name1',
+    'txt1',
+    'graph',
+    'plus1',
+    'egale1',
+    'moins1',
+    'button1'
+  ];
+  displayedColumns2: string[] = [
+    'name1',
+    'txt1',
+    'graph',
+    'plus1',
+    'egale1',
+    'moins1',
+    'button1'
+  ];
+  displayedColumns3: string[] = [
+    'name3',
+    'plus3',
+    'egale3',
+    'moins3',
+    'delete3'
+  ];
   sub1: Subscription;
   sub0: Subscription;
   subAllPrps: Subscription;
@@ -36,63 +66,63 @@ export class AdminComponent implements OnInit {
   sub5: Subscription;
   dataP: any;
   dataSource2: MatTableDataSource<String>;
-  constructor( private googleSheetService : GoogleSheetService,private gameService:GameService,public dialog: MatDialog) {}
+  constructor(
+    private googleSheetService: GoogleSheetService,
+    private gameService: GameService,
+    public dialog: MatDialog
+  ) {}
 
-  
   ngOnDestroy(): void {
-    this.sub1.unsubscribe()
-    this.sub0.unsubscribe()
+    this.sub1.unsubscribe();
+    this.sub0.unsubscribe();
 
-    this.subAllPrps.unsubscribe()
+    this.subAllPrps.unsubscribe();
   }
 
   ngOnInit(): void {
+    this.dataP = this.gameService.getProposition();
 
-    this.dataP = this.gameService.getProposition()
+    this.subAllPrps = this.gameService
+      .get_props2()
+      .pipe(withLatestFrom(this.gameService.get_upvote()))
+      .subscribe(([props, votes]) => {
+        console.log('props');
+        console.log(props);
+        this.props = props;
 
-    this.subAllPrps = this.gameService.get_props2().pipe(
-      withLatestFrom(this.gameService.get_upvote())).subscribe(([props,votes])=>{
+        this.mapNom_to_non_delete_prop = {};
 
-      console.log("props")
-      console.log(props)
-      this.props = props
+        for (let e of Object.keys(props)) {
+          this.mapNom_to_non_delete_prop[e] = Object.keys(props[e]).filter(
+            key => {
+              return !props[e][key].delete;
+            }
+          ).length;
+        }
+        console.log('votes');
+        console.log(votes);
+        this.votes = votes;
 
-      this.mapNom_to_non_delete_prop = {}
+        this.minus = {};
+        this.egale = {};
+        this.plus = {};
+        for (let e of Object.keys(votes)) {
+          this.minus[e] = Object.keys(votes[e]).filter(key => {
+            return votes[e][key] == -1;
+          });
 
-      for(let e of Object.keys(props)){
-        this.mapNom_to_non_delete_prop[e] = Object.keys(props[e]).filter((key)=>{
+          //console.log(e)
+          //console.log(this.minus[e])
 
-          return ! props[e][key].delete
+          this.egale[e] = Object.keys(votes[e]).filter(key => {
+            return votes[e][key] == 0;
+          });
+          this.plus[e] = Object.keys(votes[e]).filter(key => {
+            return votes[e][key] == 1;
+          });
+        }
 
-        }).length
-
-
-
-      }
-      console.log("votes")
-      console.log(votes)
-      this.votes = votes
-
-      this.minus = {}
-      this.egale = {}
-      this.plus = {}
-      for(let e of Object.keys(votes)){
-        this.minus[e] = Object.keys(votes[e]).filter((key)=>{
-          return votes[e][key] == -1
-        })
-        
-        //console.log(e)
-        //console.log(this.minus[e])
-
-        this.egale[e] = Object.keys(votes[e]).filter((key)=>{
-          return votes[e][key] == 0
-        })
-        this.plus[e] = Object.keys(votes[e]).filter((key)=>{
-          return votes[e][key] == 1
-        })
-      }
-
-      this.sub1 = this.googleSheetService.getCooker().subscribe((items:any[])=>{
+        /*   this.sub1 = this.googleSheetService.getCooker().subscribe((items:any[])=>{
         console.log("items44")
         console.log(items)
         
@@ -108,44 +138,36 @@ export class AdminComponent implements OnInit {
         
 
         this.dataSource = new MatTableDataSource<String>(items);
-      })
-  
+      }) */
+      });
 
+    this.subAllPrps2 = this.gameService.get_upvote().subscribe(votes => {
+      this.mapNom_to_non_delete_prop = {};
 
-    })
+      console.log('votes');
+      console.log(votes);
+      this.votes = votes;
 
-    
+      this.minus = {};
+      this.egale = {};
+      this.plus = {};
+      for (let e of Object.keys(votes)) {
+        this.minus[e] = Object.keys(votes[e]).filter(key => {
+          return votes[e][key] == -1;
+        });
 
-
-    this.subAllPrps2 = this.gameService.get_upvote().subscribe((votes)=>{
-
-      this.mapNom_to_non_delete_prop = {}
-
-
-      console.log("votes")
-      console.log(votes)
-      this.votes = votes
-
-      this.minus = {}
-      this.egale = {}
-      this.plus = {}
-      for(let e of Object.keys(votes)){
-        this.minus[e] = Object.keys(votes[e]).filter((key)=>{
-          return votes[e][key] == -1
-        })
-        
         //console.log(e)
         //console.log(this.minus[e])
 
-        this.egale[e] = Object.keys(votes[e]).filter((key)=>{
-          return votes[e][key] == 0
-        })
-        this.plus[e] = Object.keys(votes[e]).filter((key)=>{
-          return votes[e][key] == 1
-        })
+        this.egale[e] = Object.keys(votes[e]).filter(key => {
+          return votes[e][key] == 0;
+        });
+        this.plus[e] = Object.keys(votes[e]).filter(key => {
+          return votes[e][key] == 1;
+        });
       }
 
-      this.sub1 = this.googleSheetService.getLogos().subscribe((items:any[])=>{
+      /*    this.sub1 = this.googleSheetService.getLogos().subscribe((items:any[])=>{
         console.log("items44")
         console.log(items)
         
@@ -161,28 +183,17 @@ export class AdminComponent implements OnInit {
         
 
         this.dataSource2 = new MatTableDataSource<String>(items);
-      })
-    })
+      }) */
+    });
 
-
-
-
-    this.sub0 = this.gameService.user.subscribe((name)=>{
-      this.name = name
-      console.log("textName")
-      console.log(this.name)
-    })
-
-
-
-
-    
+    this.sub0 = this.gameService.user.subscribe(name => {
+      this.name = name;
+      console.log('textName');
+      console.log(this.name);
+    });
   }
 
-
-
-  show_voters = (item,voters)=>{
-
+  show_voters = (item, voters) => {
     /*
     const dialogRef = this.dialog.open(DialogVotersAdmin, {
       width: '70%',
@@ -198,56 +209,53 @@ export class AdminComponent implements OnInit {
       }
     })
     */
-  }
+  };
 
+  openDialog(item: any): void {
+    this.gameService
+      .voir_props2(item)
+      .pipe(take(1))
+      .subscribe(props => {
+        console.log('props');
+        console.log(props);
 
+        let txt_props = Object.keys(props)
+          .map(x => {
+            return {
+              name: x,
+              txt: props[x].prop,
+              approuve: props[x].approuve,
+              delete: props[x].delete
+            };
+          })
+          .filter(x => {
+            return !x.delete;
+          });
 
+        console.log('txt_props');
+        console.log(txt_props);
 
-  
+        const dialogRef = this.dialog.open(DialogPropositionAdmin, {
+          width: '70%',
+          data: { props: txt_props, text: item.txt, nom: item.nomunique }
+        });
 
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
 
-
-  openDialog(item:any): void {
-
-    this.gameService.voir_props2(item).pipe(take(1)).subscribe((props)=>{
-
-      console.log("props")
-      console.log(props)
-
-        let txt_props = Object.keys(props).map((x)=>{return {name:x,txt:props[x].prop,approuve:props[x].approuve,delete:props[x].delete}}).filter((x)=>{return ! x.delete})
-        
-        console.log("txt_props")
-        console.log(txt_props)
-        
-      const dialogRef = this.dialog.open(DialogPropositionAdmin, {
-        width: '70%',
-        data: {props: txt_props,text:item.txt,nom:item.nomunique}
+          console.log(result);
+          if (result && result != '') {
+            //this.upvoteService.updateUserProp(this.itemId, this.userId, result)
+          }
+        });
       });
-    
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-        
-        console.log(result)
-        if(result && result != ""){
-          //this.upvoteService.updateUserProp(this.itemId, this.userId, result)
-        }
-        
-      });
-
-    })
-    
   }
-
-
-
-
-
 }
 
 export interface DialogAdmin {
   nom: string;
-  text:string;
-  props:any[]
+  text: string;
+  props: any[];
 }
 @Component({
   selector: 'dialog_proposition_admin',
@@ -257,49 +265,43 @@ export interface DialogAdmin {
 export class DialogPropositionAdmin {
   sub0: Subscription;
   name: string;
-  constructor(private gameService:GameService,
+  constructor(
+    private gameService: GameService,
     public dialogRef: MatDialogRef<DialogPropositionAdmin>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogAdmin) {
+    @Inject(MAT_DIALOG_DATA) public data: DialogAdmin
+  ) {
+    console.log('data');
+    console.log(data);
+  }
 
-      console.log("data")
-      console.log(data)
+  ngOnDestroy(): void {
+    this.sub0.unsubscribe();
+  }
 
-    }
-
-    ngOnDestroy(): void {
-      this.sub0.unsubscribe()
-    }
-  
-    ngOnInit(): void {
-  
-      this.sub0 = this.gameService.user.subscribe((name)=>{
-        this.name = name
-        console.log("textName")
-        console.log(this.name)
-      })
-    }
-    
+  ngOnInit(): void {
+    this.sub0 = this.gameService.user.subscribe(name => {
+      this.name = name;
+      console.log('textName');
+      console.log(this.name);
+    });
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
-  approuve(nom,item){
-    this.gameService.approuve(nom,item.name,item.txt)
+  approuve(nom, item) {
+    this.gameService.approuve(nom, item.name, item.txt);
     this.dialogRef.close();
   }
-  delete(nom,item){
-    this.gameService.delete_prop(nom,item.name,item.txt)
+  delete(nom, item) {
+    this.gameService.delete_prop(nom, item.name, item.txt);
     this.dialogRef.close();
   }
-
 }
-
-
-
 
 export interface VotersAdmin {
   item: string;
-  names:any[]
+  names: any[];
 }
 //----------
 @Component({
@@ -308,41 +310,31 @@ export interface VotersAdmin {
   styleUrls: ['./admin.component.scss']
 })
 export class DialogVotersAdmin {
-  
   name: string;
-  constructor(private gameService:GameService,
+  constructor(
+    private gameService: GameService,
     public dialogRef: MatDialogRef<DialogVotersAdmin>,
-    @Inject(MAT_DIALOG_DATA) public data: VotersAdmin) {
+    @Inject(MAT_DIALOG_DATA) public data: VotersAdmin
+  ) {
+    console.log('data');
+    console.log(data);
+  }
+  delete = (element, name) => {
+    console.log('delete');
+    console.log(name);
+    console.log(element);
+  };
+  ngOnDestroy(): void {
+    //this.sub0.unsubscribe()
+  }
 
-      console.log("data")
-      console.log(data)
-
-    }
-    delete = (element,name)=>{
-      console.log("delete")
-      console.log(name)
-      console.log(element)
-    }
-    ngOnDestroy(): void {
-      //this.sub0.unsubscribe()
-    }
-  
-    ngOnInit(): void {
-  
-    }
-    
+  ngOnInit(): void {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
-  approuve(nom,item){
-    this.gameService.approuve(nom,item.name,item.txt)
+  approuve(nom, item) {
+    this.gameService.approuve(nom, item.name, item.txt);
     this.dialogRef.close();
   }
-  
-
-
-
-
-
 }

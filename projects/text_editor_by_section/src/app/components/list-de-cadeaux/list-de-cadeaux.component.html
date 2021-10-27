@@ -1,0 +1,21 @@
+<div style="display: flex;">
+    <mat-card style="margin: 10px;" class='my-card' *ngFor="let cadeau of cadeaux$|async">
+        <mat-card-header>
+    
+            <mat-card-title>
+    
+                {{cadeau.nom}}
+    
+            </mat-card-title>
+    
+            <mat-card-subtitle>
+
+                {{cadeau.user}}
+
+            </mat-card-subtitle>
+        </mat-card-header>
+    
+        <img mat-card-image [src]='cadeau.url'>
+    </mat-card>
+</div>
+

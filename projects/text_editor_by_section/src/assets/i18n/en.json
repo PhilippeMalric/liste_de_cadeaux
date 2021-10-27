@@ -33,7 +33,7 @@
   "anms.header.github": "Project Github Repository",
   "anms.menu.about": "Mode d'emploi",
   "anms.menu.examples": "Examples",
-  "anms.menu.game": "Projet de loi",
+  "anms.menu.game": "Liste de cadeaux",
   "anms.menu.login": "Sign in",
   "anms.menu.logout": "Logout",
   "anms.menu.personal_choice": "Personal space",
@@ -61,6 +61,6 @@
   "anms.settings.themes.sticky-header": "Sticky header",
   "anms.settings.themes.title": "Themes",
   "anms.settings.title": "Settings",
-  "anms.title.long": "Projet de loi de convocation",
-  "anms.title.short": "Projet de loi"
+  "anms.title.long": "Liste de cadeaux de la famille Malric",
+  "anms.title.short": "Cadeaux"
 }

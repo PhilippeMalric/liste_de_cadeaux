@@ -38,14 +38,12 @@ export class AuthEffects {
     { dispatch: false }
   );
 
-
   loginTry = createEffect(
     () =>
       this.actions$.pipe(
         ofType<ActionAuthLogin>(AuthActionTypes.LOGIN_TRY),
         tap(() => {
           this.googleAuth.googleSignIn();
-          
         })
       ),
     { dispatch: false }
@@ -56,12 +54,10 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType<ActionAuthLogin>(AuthActionTypes.LOGIN),
         tap(() => {
-          this.router.navigate(["mode_d_emploi"])
-          
+          this.router.navigate(['Upload_file']);
         })
       ),
     { dispatch: false }
   );
-
 }
 //

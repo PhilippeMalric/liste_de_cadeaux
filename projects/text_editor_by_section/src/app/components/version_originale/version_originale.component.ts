@@ -70,7 +70,6 @@ export class VersionOriginaleComponent implements OnInit {
 
   ngOnInit(): void {
     this.item$ = new BehaviorSubject<Item>(null);
-    
   }
 
   ngOnDestroy(): void {
@@ -98,9 +97,6 @@ export class VersionOriginaleComponent implements OnInit {
     this.notificationService.info('rigth');
   };
 
-
-
-
   probe_db = () => {
     this.gameService.probe_db();
   };
@@ -114,7 +110,7 @@ export class VersionOriginaleComponent implements OnInit {
   }
 
   page_original = () => {
-    let url = 'https://accq.quebec/projet-de-loi';
+    let url = 'https://votoire-ec754.firebaseapp.com';
     window.open(url, '_blank');
   };
 }

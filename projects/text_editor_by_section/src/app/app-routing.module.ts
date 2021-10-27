@@ -18,6 +18,8 @@ import { EnregistrementComponent } from './components/enregistrement/enregistrem
 import { ResetMotDePasseComponent } from './components/reset-mot-de-passe/reset-mot-de-passe.component';
 import { GoogleSheetComponent } from './components/google-sheet/google-sheet.component';
 import { ProjetImageComponent } from './components/projet-image/projet-image.component';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { ListDeCadeauxComponent } from './components/list-de-cadeaux/list-de-cadeaux.component';
 
 const routes: Routes = [
   {
@@ -78,6 +80,14 @@ const routes: Routes = [
   {
     path: 'oublie_mot_de_passe',
     component: ResetMotDePasseComponent
+  },
+  {
+    path: 'Upload_file',
+    component: UploadFileComponent
+  },
+  {
+    path: 'liste_de_cadeau',
+    component: ListDeCadeauxComponent
   },
 
   {

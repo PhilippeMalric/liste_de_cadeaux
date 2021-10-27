@@ -117,6 +117,7 @@ import { SettingsContainerComponent } from './components/settings/settings/setti
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule, SETTINGS } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import {
   MatBottomSheetModule,
@@ -131,7 +132,11 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MyTable } from './components/table/table.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AdminComponent, DialogPropositionAdmin, DialogVotersAdmin } from './components/admin/admin.component';
+import {
+  AdminComponent,
+  DialogPropositionAdmin,
+  DialogVotersAdmin
+} from './components/admin/admin.component';
 import {
   DialogCommentaireSection,
   PropositionsComponent
@@ -167,11 +172,16 @@ import { AuthentificationComponent } from './components/authentification/authent
 import { ResetMotDePasseComponent } from './components/reset-mot-de-passe/reset-mot-de-passe.component';
 import { GoogleSheetComponent } from './components/google-sheet/google-sheet.component';
 import { ProjetImageComponent } from './components/projet-image/projet-image.component';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { ListDeCadeauxComponent } from './components/list-de-cadeaux/list-de-cadeaux.component';
+import { NameSelectorComponent } from './components/name-selector/name-selector.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 export class MyHammerConfig extends HammerGestureConfig {}
 
 @NgModule({
   imports: [
+    MatProgressBarModule,
     ReactiveFormsModule,
     MatDialogModule,
     MatBadgeModule,
@@ -181,6 +191,7 @@ export class MyHammerConfig extends HammerGestureConfig {}
     FlexLayoutModule,
     MatGridListModule,
     AngularFirestoreModule,
+    AngularFireStorageModule,
     MatBottomSheetModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -264,7 +275,10 @@ export class MyHammerConfig extends HammerGestureConfig {}
     EnregistrementComponent,
     AuthentificationComponent,
     ResetMotDePasseComponent,
-    GoogleSheetComponent
+    GoogleSheetComponent,
+    UploadFileComponent,
+    ListDeCadeauxComponent,
+    NameSelectorComponent
   ],
   entryComponents: [
     EmailComponent,

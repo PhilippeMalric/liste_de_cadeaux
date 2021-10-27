@@ -135,7 +135,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     environment.production
       ? []
       : StoreDevtoolsModule.instrument({
-          name: 'Projet de loi ACCQ'
+          name: 'test'
         }),
 
     // 3rd party

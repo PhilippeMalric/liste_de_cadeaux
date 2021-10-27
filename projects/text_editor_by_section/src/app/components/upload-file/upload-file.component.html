@@ -1,0 +1,47 @@
+<div class="container">
+    <anms-name-selector></anms-name-selector>
+    <div class="center">
+        <mat-card>
+            <mat-card-content>
+                <h2>Ajout d'un cadeau</h2>
+                <form class="my-form">
+                    <mat-form-field class="full-width">
+                      <mat-label>Nom du cadeau</mat-label>
+                      <input type="text" matInput [formControl]="nomFormControl" [errorStateMatcher]="matcher"
+                             placeholder="Une petite auto">
+                      
+                      <mat-error *ngIf="!nomFormControl.hasError('required')">
+                        Entrez un nom valide
+                      </mat-error>
+                      <mat-error *ngIf="nomFormControl.hasError('required')">
+                        Le nom est  <strong>requis</strong>
+                      </mat-error>
+                    </mat-form-field>
+                    <br>
+                    
+                        <mat-label>Image</mat-label>
+                        
+                            <input type="file"
+                            id="avatar" name="avatar"
+                            accept="image/png, image/jpeg" (change)="fileChange($event)">
+    
+                     
+                  </form>
+            </mat-card-content>
+            <img [src]="imageUrl" *ngIf="imageUrl" mat-card-image>
+            
+            <div class="progress" *ngIf="(pcChange$ | async) as pourcentage">
+                <mat-progress-bar class="mat-progress-bar" mode="determinate" [value]="pourcentage"></mat-progress-bar>
+            </div>
+
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="onSubmit()">Ajoutez un cadeau</button>
+            </mat-card-actions>
+        </mat-card>
+       
+       
+    </div>
+    
+    <anms-list-de-cadeaux></anms-list-de-cadeaux>
+    
+    </div>

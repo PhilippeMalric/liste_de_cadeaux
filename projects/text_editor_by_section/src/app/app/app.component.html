@@ -8,11 +8,14 @@
         <span>{{ 'anms.title.short' | translate}}</span></div>
       -->
       <mat-nav-list>
+        <!--
         <a mat-list-item *ngFor="let item of navigationSideMenu" (click)="sidenav.close()" [routerLink]="[item.link]"
-        [ngStyle]="{'pointer-events':item.enabled ?'auto':'none','color': item.enabled ?'black':'darkgrey'}"
-          routerLinkActive="active">
-          {{item.label | translate}}
+          [ngStyle]="{'pointer-events':item.enabled ?'auto':'none','color': item.enabled ?'black':'darkgrey'}"
+            routerLinkActive="active">
+           {{item.label | translate}}
         </a>
+        -->
+    
         <!--<a mat-list-item  (click)="sidenav.close()" [routerLink]="'add_to_db'"
         routerLinkActive="active">
         Upload
@@ -38,6 +41,17 @@
         routerLinkActive="active">
         Oublie de mot de passe
               </a>
+        <hr>
+        <a mat-list-item  (click)="sidenav.close()" [routerLink]="'Upload_file'"
+        routerLinkActive="active">
+        Téléverser une image
+              </a>
+
+        <a mat-list-item  (click)="sidenav.close()" [routerLink]="'liste_de_cadeau'"
+        routerLinkActive="active">
+        Liste de cadeaux
+              </a>
+              
         <hr>
         <div style="margin-left:20px" *ngIf="(isAuthenticated$ | async)"  >
           Bienvenue {{(gameService.user|async)}}
@@ -118,7 +132,23 @@
                 Connexion
               </button>
             </span>
-          <span class="d-none d-md-inline">
+
+            <span class="d-none d-lg-inline" *ngIf="(isAuthenticated$ | async)">
+              <button mat-button class="nav-button" 
+              routerLink="authentification" 
+              routerLinkActive="Upload_file">
+              Téléverser une image
+              </button>
+            </span>
+            <span class="d-none d-lg-inline" *ngIf="(isAuthenticated$ | async)">
+              <button mat-button class="nav-button" 
+              routerLink="liste_de_cadeau" 
+              routerLinkActive="active">
+              Liste de cadeaux
+              </button>
+            </span>
+
+          <!-- <span class="d-none d-md-inline">
             <button mat-button class="nav-button" 
                     *ngFor="let item of navigation" 
                     [routerLink]="[item.link]" 
@@ -126,9 +156,7 @@
                     routerLinkActive="active">
               {{item.label | translate}}
             </button>
-            
-            
-          </span>
+          </span> -->
 
           <!--<button mat-button mat-stroked-button color="accent" *ngIf="!(isAuthenticated$ | async)" (click)="onLoginClick()">
             Admin

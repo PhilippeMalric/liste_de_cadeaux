@@ -105,9 +105,8 @@ export class AppComponent implements OnInit {
     private d3service: D3Service,
     public gameService: GameService,
     private notificationService: NotificationService,
-    private googleAuthService:GoogleAuthService,
-    private dataService: DataService,
-    
+    private googleAuthService: GoogleAuthService,
+    private dataService: DataService
   ) {
     console.log('App constructor!!');
 
@@ -123,8 +122,6 @@ export class AppComponent implements OnInit {
         this.changeDetectorRef.markForCheck();
       })
     );
-
- 
   }
 
   private static isIEorEdgeOrSafari() {
@@ -148,12 +145,11 @@ export class AppComponent implements OnInit {
     },60000)
 
     */
-    setTimeout(()=>{
-      if(this.displayName == ""){
-        this.notificationService.default("Pour nous rejoindre, écrivez à : rendez-vous2021@accq.quebec")
+    setTimeout(() => {
+      if (this.displayName == '') {
+        this.notificationService.default('Veuillez vous identifier');
       }
-     
-    },3000)
+    }, 3000);
 
     this.gameService.user.next(this.displayName);
     this.subscription1 = this.gameService.user.subscribe(user => {
@@ -190,27 +186,19 @@ export class AppComponent implements OnInit {
     this.subscription1.unsubscribe();
   };
 
-
- 
-
-
-
-
   logOut2 = () => {
     this.gameService.user.next('');
     this.router.navigate(['mode_d_emploi']);
   };
 
   validez = () => {
+    this.googleAuthService.signInLink(this.displayName);
 
-    this.googleAuthService.signInLink(this.displayName)
-
-    
     //this.router.navigate(['projet_de_loi']);
   };
 
-  checkAuth(){
-    this.googleAuthService.checkAuth(this.displayName)
+  checkAuth() {
+    this.googleAuthService.checkAuth(this.displayName);
   }
 
   ngAfterViewInit(): void {

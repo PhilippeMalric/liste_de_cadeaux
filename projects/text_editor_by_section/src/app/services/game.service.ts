@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { BehaviorSubject, Subscription, Subject } from 'rxjs';
+import { BehaviorSubject, Subscription, Subject, of } from 'rxjs';
 import { Link, Node } from '../d3';
 import { Store } from '@ngrx/store';
 import { AngularFireDatabase } from '@angular/fire/database';
@@ -16,10 +16,17 @@ export class SousSection {
   color: String;
   vote: String;
   premier: boolean;
-  type:String;
+  type: String;
   groupe: String;
 
-  constructor(id: String, texte: String, vote: String,premier:boolean,type:String,groupe:String) {
+  constructor(
+    id: String,
+    texte: String,
+    vote: String,
+    premier: boolean,
+    type: String,
+    groupe: String
+  ) {
     this.id = id;
     this.premier = premier;
     this.texte = texte;
@@ -50,7 +57,6 @@ export class Section {
 
 @Injectable()
 export class GameService {
-  
   gameSubscription: Subscription;
   nom_du_joueur$: BehaviorSubject<String>;
   heureDispo: number;
@@ -60,17 +66,17 @@ export class GameService {
   mot: number;
   cats = ['ring'];
   cat = 'ring';
-  
+
   my_cat = '';
   items: BehaviorSubject<Item[]>;
   user: BehaviorSubject<string>;
   userEmail: BehaviorSubject<string>;
   started: BehaviorSubject<boolean>;
   textName: BehaviorSubject<string>;
-  data2 = []
+  data2 = [];
 
   constructor(
-    private googleSheetService : GoogleSheetService,
+    private googleSheetService: GoogleSheetService,
     private store: Store,
     private db: AngularFireDatabase,
     private http: HttpClient
@@ -83,7 +89,6 @@ export class GameService {
     this.nom_du_joueur$ = new BehaviorSubject<String>('');
 
     this.textName = new BehaviorSubject<string>('');
-    
 
     this.items = new BehaviorSubject<Item[]>([]);
     this.user = new BehaviorSubject<string>('Mon_nom');
@@ -99,50 +104,43 @@ export class GameService {
     this.db.object('textCourant').set(text);
   };
 
-  approuve(item,name:string,text){
-    let data = {prop:text,approuve:true}
-    console.log("chemin")
-    console.log("propositions/"+item+"/"+name);
-    
-    this.db.object("propositions/"+item+"/"+name).update(data)
+  approuve(item, name: string, text) {
+    let data = { prop: text, approuve: true };
+    console.log('chemin');
+    console.log('propositions/' + item + '/' + name);
+
+    this.db.object('propositions/' + item + '/' + name).update(data);
   }
-  delete_prop(item,name:string,text){
-    let data = {prop:text,delete:true}
-    console.log("chemin")
-    console.log("propositions/"+item+"/"+name);
-    
-    this.db.object("propositions/"+item+"/"+name).update(data)
+  delete_prop(item, name: string, text) {
+    let data = { prop: text, delete: true };
+    console.log('chemin');
+    console.log('propositions/' + item + '/' + name);
+
+    this.db.object('propositions/' + item + '/' + name).update(data);
   }
 
+  get_props2 = () => {
+    return this.db.object(`propositions/`).valueChanges();
+  };
+  voir_props2 = item => {
+    return this.db.object(`propositions/${item.nomunique}`).valueChanges();
+  };
+  get_upvote = () => {
+    return this.db.object(`upvotes/`).valueChanges();
+  };
 
-  get_props2 = ()=>{
+  get_projet_de_loi2 = () => {
+    return this.http.get('assets/projet_de_loi.json');
+  };
 
-    return this.db.object(`propositions/`).valueChanges()
-  
-  }
-  voir_props2 = (item)=>{
+  get_logos = () => {
+    return this.googleSheetService.getLogos();
+  };
 
-    return this.db.object(`propositions/${item.nomunique}`).valueChanges()
-  
-  }
-  get_upvote = ()=>{
-    return this.db.object(`upvotes/`).valueChanges()
-   }
-
-   get_projet_de_loi2 = () => {
-    return this.http.get('assets/projet_de_loi.json')
-   }
-   
-   get_logos = ()=>{
-
-
-    return this.googleSheetService.getLogos()
-
-   }
-
-
-   get_projet_de_loi3 = () => {
-    return this.googleSheetService.getCooker().pipe(
+  get_projet_de_loi3 = () => {
+    return of({});
+    /* 
+    this.googleSheetService.getCooker().pipe(
       map((item: any[]) => {
         console.log(
           '-------------------------------------------------projet_de_loi3!------------'
@@ -233,19 +231,18 @@ export class GameService {
         section.printSection()
 
       })
-      */
+      
         return sections;
       })
-      )
-    }
-   
-    uniqueArray2 = (arr)=> {
-      var a = [];
-      for (var i=0, l=arr.length; i<l; i++)
-          if (a.indexOf(arr[i]) === -1 && arr[i] !== '')
-              a.push(arr[i]);
-      return a;
-  }
+      ) */
+  };
+
+  uniqueArray2 = arr => {
+    var a = [];
+    for (var i = 0, l = arr.length; i < l; i++)
+      if (a.indexOf(arr[i]) === -1 && arr[i] !== '') a.push(arr[i]);
+    return a;
+  };
   get_projet_de_loi = () => {
     return this.http.get('assets/projet_de_loi.json').pipe(
       map((item: any[]) => {
@@ -282,11 +279,11 @@ export class GameService {
     );
   };
 
-  voir_props = (itemId,userId) => {
+  voir_props = (itemId, userId) => {
     return this.db.object(`propositions/${itemId}/${userId}`).valueChanges();
   };
 
-  get_props = (itemId) => {
+  get_props = itemId => {
     return this.db.object(`propositions/${itemId}`).valueChanges();
   };
 
@@ -323,8 +320,6 @@ export class GameService {
   get_user_data = () => {
     return this.db.object('users').valueChanges();
   };
-
-
 
   probe_db = () => {
     this.db
@@ -370,12 +365,9 @@ export class GameService {
       });
   };
 
-
-  getObservable2 = (path) => {
+  getObservable2 = path => {
     return this.db.object(path).valueChanges();
   };
-
-
 
   getAddOneHour = () => {
     this.heureDispo = this.heureDispo + 1;
@@ -388,17 +380,7 @@ export class GameService {
 
   // new Game(GameEasyComponent),
 
-
   getProposition = () => {
-    return this.getObservable2("/propositions")
+    return this.getObservable2('/propositions');
   };
-
-
-
-
-
-
-
-
-
 }

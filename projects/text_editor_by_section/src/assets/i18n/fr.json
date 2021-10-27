@@ -33,7 +33,7 @@
   "anms.header.github": "Dépot Github",
   "anms.menu.about": "Mode d'emploi",
   "anms.menu.examples": "Exemples",
-  "anms.menu.game": "Projet de loi",
+  "anms.menu.game": "Liste de cadeaux",
   "anms.menu.login": "Connexion",
   "anms.menu.logout": "Déconnexion",
   "anms.menu.personal_choice": "Espace personel",
@@ -61,6 +61,6 @@
   "anms.settings.themes.sticky-header": "Entête fixe",
   "anms.settings.themes.title": "Thèmes",
   "anms.settings.title": "Paramètres",
-  "anms.title.long": "Projet de loi de convocation",
-  "anms.title.short": "Projet de loi"
+  "anms.title.long": "Liste de cadeaux",
+  "anms.title.short": "Cadeaux"
 }
