@@ -16,6 +16,7 @@ export class ListDeCadeauxComponent implements OnInit {
   ngOnInit(): void {
     this.cadeaux$ = this.cadeauxService.get_cadeaux().pipe(
       map((data: any) => {
+        console.log(data);
         return Object.keys(data).map(key => {
           return data[key];
         });

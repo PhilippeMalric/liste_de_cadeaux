@@ -3,7 +3,6 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { FormControl, Validators } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { CadeauxService } from '../../services/cadeaux.service';
-import { MyErrorStateMatcher } from '../email/email.component';
 
 @Component({
   selector: 'anms-name-selector',
@@ -13,7 +12,6 @@ import { MyErrorStateMatcher } from '../email/email.component';
 export class NameSelectorComponent implements OnInit {
   nomFormControl = new FormControl('', [Validators.required]);
 
-  matcher = new MyErrorStateMatcher();
   noms: any;
 
   constructor(
@@ -26,6 +24,7 @@ export class NameSelectorComponent implements OnInit {
       .get_noms()
       .pipe(
         map((data: any) => {
+          console.log(data);
           return Object.keys(data).map(key => {
             return data[key];
           });
