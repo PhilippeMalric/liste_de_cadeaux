@@ -55,8 +55,7 @@ Thumbs.db
 debug.log
 
 
-projects/text_editor_by_section/src/environments/*
-environments/*
-
+/projects/text_editor_by_section/src/environments/*
+/environments/*
 test_git/
 
