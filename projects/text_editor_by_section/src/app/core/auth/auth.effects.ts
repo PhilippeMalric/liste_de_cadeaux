@@ -38,7 +38,7 @@ export class AuthEffects {
     { dispatch: false }
   );
 
-  login = createEffect(
+  loginTry = createEffect(
     () =>
       this.actions$.pipe(
         ofType<ActionAuthLogin>(AuthActionTypes.LOGIN_TRY),
@@ -48,4 +48,16 @@ export class AuthEffects {
       ),
     { dispatch: false }
   );
+
+  login = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType<ActionAuthLogin>(AuthActionTypes.LOGIN),
+        tap(() => {
+          this.router.navigate(['Upload_file']);
+        })
+      ),
+    { dispatch: false }
+  );
 }
+//

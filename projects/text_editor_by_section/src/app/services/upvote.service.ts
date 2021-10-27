@@ -13,23 +13,27 @@ export class UpvoteService {
 
   getItemVotes(itemId): any {
     // Gets total votes
-    console.log(itemId);
+    //console.log(itemId);
     return this.db
       .object(`upvotes/${itemId}`)
       .valueChanges()
       .pipe(
         tap(item => {
-          console.log('vote');
-          console.log(item);
+          //console.log('vote');
+          //console.log(item);
         })
       );
   }
 
   updateUserProp = (itemId, userId, prop) => {
-    console.log('UpdateProp');
-    let data = {};
-    data[userId] = { approuve: false, prop: prop };
-    this.db.object(`propositions/${itemId}/`).update(data);
+    this.gameService.userEmail.pipe(take(1)).subscribe((userEmail)=>{
+      console.log('UpdateProp');
+      let data = {};
+      data[userId] = {delete: false, approuve: false, prop: prop, email:userEmail };
+      this.db.object(`propositions/${itemId}/`).update(data);
+
+    })
+    
   };
 
   updateUserVote(itemId, userId, vote): void {
@@ -44,8 +48,8 @@ export class UpvoteService {
       .pipe(take(1))
       .subscribe((item: any) => {
         console.log('-----------Add item  -----------');
-        console.log(item);
-        console.log(itemId in item);
+        //console.log(item);
+        //console.log(itemId in item);
         if (itemId in item) {
           this.db.object(`upvotes/${itemId}/`).update(data);
         } else {

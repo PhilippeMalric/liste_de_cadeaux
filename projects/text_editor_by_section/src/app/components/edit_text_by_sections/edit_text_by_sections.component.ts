@@ -143,20 +143,7 @@ export class Edit_text_by_sectionsComponent implements OnInit {
     this.notificationService.info('rigth');
   };
 
-  change_cat = (cat: any) => {
-    if (this.subscription_db) {
-      this.subscription_db.unsubscribe();
-    }
-    this.gameService.change_cat('items/' + cat);
-    this.subscription_db = this.gameService.get_items().subscribe(items => {
-      this.items_db = items;
-      this.items_db_length.next(this.items_db.length);
-      console.log('item_db');
-      console.log(this.items_db);
-      this.item$.next(this.items_db[this.item_i]);
-      this.ref.markForCheck();
-    });
-  };
+
 
   probe = () => {
     console.log(this.items_db);
@@ -166,9 +153,7 @@ export class Edit_text_by_sectionsComponent implements OnInit {
     this.update();
   };
 
-  delete_all = () => {
-    this.gameService.removeALL();
-  };
+
 
   delete = item => {
     this.gameService.remove_by_user(item, this.uid);

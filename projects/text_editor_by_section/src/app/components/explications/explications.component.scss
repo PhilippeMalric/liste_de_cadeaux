@@ -1,0 +1,21 @@
+.center {
+  margin: auto;
+  text-justify: distribute;
+  width: 70%;
+}
+
+ul {
+  list-style: none;
+}
+
+.center-v {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+ul.lien {
+  list-style-type: circle;
+}

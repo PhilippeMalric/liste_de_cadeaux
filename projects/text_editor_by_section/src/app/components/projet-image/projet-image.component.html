@@ -1,0 +1,27 @@
+<div class="box spaceTop" >  
+    <mat-card >
+        <mat-card-title class="header" >Faites votre choix</mat-card-title>
+        
+      
+        <mat-card-content>
+            <mat-card   *ngFor="let image of (image$|async)" [ngStyle]="{'margin-top':'5px'}">
+                <img mat-card-image [src]="image?.url" alt="Logo">
+                <mat-card-content class="box2" [ngClass]="{'sousSection':!small}">
+                    
+                    <div >
+                        <upvote-button [itemId]='image?.id' [userId]='displayName'></upvote-button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </mat-card-content>
+        <mat-card-actions>
+            <div class="center"> 
+                <button [ngStyle]="{'margin-top':'10px','margin-bottom':'20px'}" 
+                    mat-raised-button color="warn"  class="commentaire"    >
+                    Commentaire sur la section
+                </button>
+            </div>
+        </mat-card-actions>
+    </mat-card>
+
+</div>

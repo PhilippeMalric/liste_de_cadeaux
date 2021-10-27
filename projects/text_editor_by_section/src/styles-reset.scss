@@ -2,9 +2,12 @@
   &:active,
   :focus {
     outline: none !important;
-  }
+  };
+  
 }
-
+.mat-button[disabled][disabled]{
+  color:rgb(173, 173, 140)!important;
+}
 code {
   white-space: nowrap;
   border-radius: 10px;

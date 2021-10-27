@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="center">
+        <mat-card>
+            <mat-card-content>
+                <h2>Création d'un compte</h2>
+                <p>Vous recevrez un courriel et vous devrez cliquez sur le lien envoyé pour confirmer votre compte. Il faudra vous authentifié par la suite.</p>
+                <form class="my-form">
+                    <mat-form-field class="full-width">
+                      <mat-label>Courriel</mat-label>
+                      <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                             placeholder="Ex. pat@example.com">
+                      
+                      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                        Entrez une adresse courriel valide
+                      </mat-error>
+                      <mat-error *ngIf="emailFormControl.hasError('required')">
+                        Le courriel est  <strong>requis</strong>
+                      </mat-error>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="full-width">
+                        <mat-label>Mot de passe</mat-label>
+                        <input type="password" matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher2"
+                               placeholder="12345678">
+                        <mat-hint>Minimum 8 charactères</mat-hint>
+                        <mat-error *ngIf="passwordFormControl.hasError('minlength') && !passwordFormControl.hasError('required')">
+                            Minimum 8 charactères!
+                        </mat-error>
+                        <mat-error *ngIf="passwordFormControl.hasError('required')">
+                            Le mot de passe est  <strong>requis</strong>
+                        </mat-error>
+                      </mat-form-field>
+                      <br>
+                      <mat-form-field class="full-width">
+                        <mat-label>Retapez le mot de passe</mat-label>
+                        <input type="password" matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher3"
+                               placeholder="12345678">
+                        <mat-hint>Minimum 8 charactères</mat-hint>
+                        <mat-error *ngIf="passwordFormControl2.hasError('minlength') && !passwordFormControl2.hasError('required')">
+                            Minimum 8 charactères!
+                        </mat-error>
+                        <mat-error *ngIf="passwordFormControl2.value != passwordFormControl.value">
+                           Les deux mots de passe doivent être identiques!
+                        </mat-error>
+                        <mat-error *ngIf="passwordFormControl2.hasError('required')">
+                            Le 2e mot de passe est  <strong>requis</strong>.
+                        </mat-error>
+                      </mat-form-field>
+                  </form>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="onSubmit()">Créer un compte</button>
+            </mat-card-actions>
+        </mat-card>
+       
+       
+    </div>
+
+    
+</div>

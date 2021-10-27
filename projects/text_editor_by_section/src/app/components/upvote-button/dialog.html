@@ -1,12 +1,13 @@
 
-<h1 mat-dialog-title >Ecrivez votre proposition</h1>
+<h1 mat-dialog-title >Écrivez votre proposition</h1>
 
 <div class="prop"  mat-dialog-content>
-<mat-form-field>
+<mat-form-field style="width: 100%;">
   <mat-label >Votre proposition</mat-label>
-  <textarea matInput [(ngModel)]="data.nouveau_text"></textarea>
+  <textarea matInput [(ngModel)]="data.nouveau_text" style="height: 50px;width: 100%;"></textarea>
 </mat-form-field>
 </div>
+<!--<anms-email></anms-email>-->
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Retour</button>
   <button mat-button [mat-dialog-close]="data.nouveau_text" cdkFocusInitial>Ok</button>

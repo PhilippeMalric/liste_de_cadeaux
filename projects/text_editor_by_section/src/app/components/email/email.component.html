@@ -1,0 +1,41 @@
+<mat-card *ngIf="!this.valide">
+    <mat-card-title class="header" >
+        Inscrivez votre adresse courriel
+
+    </mat-card-title>
+        pour que l'on puisse vous contacter.
+    <mat-card-subtitle>
+
+    </mat-card-subtitle>
+            
+          
+    <mat-card-content>
+        <form class="example-form">
+            <mat-form-field  class="example-full-width">
+              <mat-label>Courriel</mat-label>
+              <input #courriel type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                     placeholder="example@gmail.com">
+              <mat-hint>Pas besoin de valider deux fois.</mat-hint>
+              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Veuillez entrer un courriel valide.
+              </mat-error>
+            </mat-form-field>
+            <button [disabled]="emailFormControl.errors" class="validate" color="accent" mat-raised-button (click)="valider()">Valider</button>
+          </form>
+    </mat-card-content>
+
+</mat-card>
+
+<mat-card *ngIf="this.valide">
+    <mat-card-title class="header" >
+        <h3>
+            Votre adresse courriel :
+        </h3> 
+    </mat-card-title>
+    <mat-card-content class="sidebyside">
+        {{this.userEmail}}
+    </mat-card-content>
+    <mat-card-actions class="sidebyside">
+        <button mat-raised-button color="primary" (click)="changer()">Changer</button>
+    </mat-card-actions>
+</mat-card>

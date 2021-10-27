@@ -1,0 +1,12 @@
+<div class="center">
+  <h1 mat-dialog-title >Voters</h1>
+  <h2>{{data.item}}</h2>
+  
+  <div *ngFor="let name of data.names" class="inside_dialog_admin">
+    <h3 style="margin-right: 20px;">{{name}}</h3>
+    <button mat-raised-button [ngClass]="{'delete':true}" color=warn (click)="delete(data.item,name)">Delete</button>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button (click)="onNoClick()">Ok</button>
+  </div>
+</div>

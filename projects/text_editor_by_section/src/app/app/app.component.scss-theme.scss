@@ -56,11 +56,13 @@
   .info-notification-overlay {
     color: mat-color($accent, default-contrast);
     background-color: mat-color($accent);
+    font-size: medium;
   }
 
   .success-notification-overlay {
     color: mat-color($success-colors, default-contrast);
     background-color: mat-color($success-colors);
+    font-size: medium;
   }
 
   .warning-notification-overlay {

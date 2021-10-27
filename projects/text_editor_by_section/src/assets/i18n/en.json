@@ -31,9 +31,9 @@
   "anms.features.typescript": "Superior developer experience, code completion, refactoring and less bugs",
   "anms.footer.changelog": "Show changelog",
   "anms.header.github": "Project Github Repository",
-  "anms.menu.about": "Projet de loi",
+  "anms.menu.about": "Mode d'emploi",
   "anms.menu.examples": "Examples",
-  "anms.menu.game": "Propositions",
+  "anms.menu.game": "Liste de cadeaux",
   "anms.menu.login": "Sign in",
   "anms.menu.logout": "Logout",
   "anms.menu.personal_choice": "Personal space",
@@ -61,6 +61,6 @@
   "anms.settings.themes.sticky-header": "Sticky header",
   "anms.settings.themes.title": "Themes",
   "anms.settings.title": "Settings",
-  "anms.title.long": "Projet de loi",
-  "anms.title.short": "Projet de loi"
+  "anms.title.long": "Liste de cadeaux de la famille Malric",
+  "anms.title.short": "Cadeaux"
 }

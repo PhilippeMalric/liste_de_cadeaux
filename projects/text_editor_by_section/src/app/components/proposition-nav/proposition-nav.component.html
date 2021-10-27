@@ -1,0 +1,43 @@
+<div class="container">
+
+    <div class="center2" >
+        <button mat-raised-button color="primary" (click)="downloadFile()">Télécharger les propositions</button>
+    </div>
+
+    <div class="center2 mt-2" >
+        <button mat-raised-button color="accent" (click)="downloadPDL()">Télécharger le projet de loi avec les amendements et leurs votes</button>
+    </div>
+
+    <div class="center" >
+
+        <mat-card *ngFor="let e of gameService.data2" [ngClass]="{'margin-top-bottom':true,'approuve':e.approuve,'delete':e.delete}">
+            <mat-card-title>
+                {{e.nomItem}}
+            </mat-card-title>
+            <!--<mat-card-subtitle>
+                {{e.nomUser}}
+            </mat-card-subtitle> -->
+            <mat-card-content>
+                <p class="prop">
+                    {{e.prop}}
+                </p> 
+                <!--<mat-card *ngIf="e.hasOwnProperty('email')">
+                     <mat-card-title class="courriel" >
+                            Adresse courriel :
+                    </mat-card-title> 
+                    <mat-card-content class="sidebyside">
+                        {{e.email}}
+                    </mat-card-content>
+                </mat-card>-->
+
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+    
+</div>
+
+
+
+
+

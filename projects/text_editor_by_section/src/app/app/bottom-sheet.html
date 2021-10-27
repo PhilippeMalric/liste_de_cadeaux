@@ -1,11 +1,29 @@
 
 <div style="margin:auto;width: fit-content;" >
-  <div class="center">Cette application a ete faite a partir du projet : 
-    <a href="https://tomastrajan.github.io/angular-ngrx-material-starter">angular-ngrx-material-starter</a> 
-  </div>
-  <div class="center">
-    Les auteurs de la presente version sont : Philippe Malric et Louis Clapin
-  </div>
-<div style="margin:auto;width: fit-content;" >
-  <button  mat-raised-button color="primary" (click)="close()">Fermer</button>
-</div>
+  <mat-card>
+    <mat-card-title class="header" >
+      Liste de cadeaux de la famille Malric
+    </mat-card-title>
+        
+    <mat-card-subtitle>
+      Ajoutez des cadeaux après vous être authentifié.
+    </mat-card-subtitle>
+    <mat-card-content>
+      <div class="center">Cette application a été faite à partir du projet : 
+        <a href="https://tomastrajan.github.io/angular-ngrx-material-starter">angular-ngrx-material-starter</a> 
+      </div>
+      <p>
+        Pour me contacter, écrivez à malric.philippe@gmail.com
+      </p>
+      <!--
+      <div class="center">
+        Les auteurs de la présente version sont : Philippe Malric et Louis Clapin
+      </div>
+      -->
+      
+    <div style="margin:auto;width: fit-content;" style="margin-top:10px">
+      <button  mat-raised-button color="primary" (click)="close()">Fermer</button>
+    </div>
+    </mat-card-content>
+  </mat-card>
+  

@@ -1,13 +1,62 @@
-.button1 {
-  margin-left: 30px;
-  margin-bottom: 30px;
-  margin-top: 30px;
-}
-
-.button0 {
-  margin-bottom: 30px;
-}
-
 .table1 {
   margin-left: 30px;
+}
+
+.inside_dialog_prop {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.inside_dialog_admin {
+  margin-top: 10px;
+  display: flex;
+}
+
+.center {
+  margin: auto;
+  width: fit-content;
+}
+
+.center-v {
+  margin: auto;
+}
+
+.delete {
+  float: right;
+  margin-right: 10px;
+  margin-left: auto;
+}
+
+.margin10px {
+  padding-right: 30px;
+}
+.justify {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: justify;
+}
+
+.mat-plus {
+  background-color: rgb(111, 189, 111);
+  color: rgb(0, 0, 0);
+}
+.mat-egale {
+  background-color: rgb(255, 251, 0);
+  color: rgb(0, 0, 0);
+}
+.mat-moins {
+  background-color: rgb(255, 0, 0);
+  color: rgb(0, 0, 0);
+}
+
+.vote_result {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.big_font {
+  font-size: 36px;
+  margin-left: 5px;
+  margin-right: 5px;
 }

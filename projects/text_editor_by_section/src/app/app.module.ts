@@ -21,7 +21,7 @@ import { FEATURE_NAME, reducers } from './gameMeta.state';
 import { HttpClient } from '@angular/common/http';
 
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -117,6 +117,7 @@ import { SettingsContainerComponent } from './components/settings/settings/setti
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule, SETTINGS } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import {
   MatBottomSheetModule,
@@ -131,7 +132,11 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MyTable } from './components/table/table.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AdminComponent } from './components/admin/admin.component';
+import {
+  AdminComponent,
+  DialogPropositionAdmin,
+  DialogVotersAdmin
+} from './components/admin/admin.component';
 import {
   DialogCommentaireSection,
   PropositionsComponent
@@ -153,11 +158,31 @@ import {
 } from './components/upvote-button/upvote-button.component';
 import { UpvoteService } from './services/upvote.service';
 import { MatBadgeModule } from '@angular/material/badge';
+import { EmailComponent } from './components/email/email.component';
+import { ExplicationsComponent } from './components/explications/explications.component';
+import { RemerciementComponent } from './components/remerciement/remerciement.component';
+import { PropositionNavComponent } from './components/proposition-nav/proposition-nav.component';
+import { GestionDonneesComponent } from './components/gestion-donnees/gestion-donnees.component';
+import { GraphVoteComponent } from './components/graph-vote/graph-vote.component';
+import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
+import { MessageInterPhaseComponent } from './components/message-inter-phase/message-inter-phase.component';
+import { FromLinkComponent } from './components/from-link/from-link.component';
+import { EnregistrementComponent } from './components/enregistrement/enregistrement.component';
+import { AuthentificationComponent } from './components/authentification/authentification.component';
+import { ResetMotDePasseComponent } from './components/reset-mot-de-passe/reset-mot-de-passe.component';
+import { GoogleSheetComponent } from './components/google-sheet/google-sheet.component';
+import { ProjetImageComponent } from './components/projet-image/projet-image.component';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { ListDeCadeauxComponent } from './components/list-de-cadeaux/list-de-cadeaux.component';
+import { NameSelectorComponent } from './components/name-selector/name-selector.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 export class MyHammerConfig extends HammerGestureConfig {}
 
 @NgModule({
   imports: [
+    MatProgressBarModule,
+    ReactiveFormsModule,
     MatDialogModule,
     MatBadgeModule,
     DragDropModule,
@@ -166,6 +191,7 @@ export class MyHammerConfig extends HammerGestureConfig {}
     FlexLayoutModule,
     MatGridListModule,
     AngularFirestoreModule,
+    AngularFireStorageModule,
     MatBottomSheetModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -201,6 +227,7 @@ export class MyHammerConfig extends HammerGestureConfig {}
 
     // app
     AppRoutingModule,
+    NgxGoogleAnalyticsModule.forRoot('UA-148112928-2'),
     EffectsModule.forFeature([]),
     StoreModule.forFeature(FEATURE_NAME, reducers),
     TranslateModule.forChild({
@@ -213,6 +240,7 @@ export class MyHammerConfig extends HammerGestureConfig {}
     })
   ],
   declarations: [
+    ProjetImageComponent,
     MyTable,
     GraphComponent,
     ...SHARED_VISUALS,
@@ -233,9 +261,29 @@ export class MyHammerConfig extends HammerGestureConfig {}
     UpvoteButtonComponent,
     DialogPropositionVote,
     DialogCommentaireSection,
-    DialogInfo
+    DialogInfo,
+    DialogVotersAdmin,
+    DialogPropositionAdmin,
+    EmailComponent,
+    ExplicationsComponent,
+    RemerciementComponent,
+    PropositionNavComponent,
+    GestionDonneesComponent,
+    GraphVoteComponent,
+    MessageInterPhaseComponent,
+    FromLinkComponent,
+    EnregistrementComponent,
+    AuthentificationComponent,
+    ResetMotDePasseComponent,
+    GoogleSheetComponent,
+    UploadFileComponent,
+    ListDeCadeauxComponent,
+    NameSelectorComponent
   ],
   entryComponents: [
+    EmailComponent,
+    DialogPropositionAdmin,
+    DialogVotersAdmin,
     DialogCommentaireSection,
     DialogPropositionVote,
     DialogInfo

@@ -70,16 +70,6 @@ export class VersionOriginaleComponent implements OnInit {
 
   ngOnInit(): void {
     this.item$ = new BehaviorSubject<Item>(null);
-    this.change_cat(this.cats[0]);
-    this.sections = [];
-    this.sub1 = this.gameService
-      .get_projet_de_loi()
-      .subscribe((sections: any) => {
-        console.log('sections...');
-        console.log(sections);
-        this.sections = sections;
-        this.ref.markForCheck();
-      });
   }
 
   ngOnDestroy(): void {
@@ -107,37 +97,6 @@ export class VersionOriginaleComponent implements OnInit {
     this.notificationService.info('rigth');
   };
 
-  change_cat = (cat: any) => {
-    console.log(cat);
-    if (this.subscription_db) {
-      this.subscription_db.unsubscribe();
-    }
-    this.gameService.change_cat('items/' + cat);
-    this.subscription_db = this.gameService.get_items().subscribe(items => {
-      this.item_db = items;
-      console.log(items);
-      this.ref.markForCheck();
-    });
-  };
-
-  upload = () => {
-    let items = this.sections;
-
-    this.item$.pipe(take(1)).subscribe((item: Item) => {
-      console.log(item, 'item');
-      this.gameService.add_one_item_gen(item);
-      this.notificationService.info('item added');
-    });
-  };
-
-  delete_all = () => {
-    this.gameService.removeALL();
-  };
-
-  delete = item => {
-    this.gameService.remove(item);
-  };
-
   probe_db = () => {
     this.gameService.probe_db();
   };
@@ -151,7 +110,7 @@ export class VersionOriginaleComponent implements OnInit {
   }
 
   page_original = () => {
-    let url = 'https://accq.quebec/projet-de-loi';
+    let url = 'https://votoire-ec754.firebaseapp.com';
     window.open(url, '_blank');
   };
 }

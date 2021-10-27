@@ -10,8 +10,6 @@
 /node_modules
 yarn.lock
 
-/projects/text_editor_by_section/src/environments/*
-/environments/*
 
 
 /public/*
@@ -55,3 +53,9 @@ Thumbs.db
 
 # debug
 debug.log
+
+
+/projects/text_editor_by_section/src/environments/*
+/environments/*
+test_git/
+

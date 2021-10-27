@@ -1,5 +1,15 @@
 @import '../../styles-variables';
 
+#info{
+  background-color: blue;
+  background: blue;
+}
+
+
+.mat-button.mat-primary:disabled{
+  color: antiquewhite !important;
+}
+
 ul {
   list-style: none;
 }

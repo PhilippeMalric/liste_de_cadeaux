@@ -9,40 +9,95 @@ import { PropositionsComponent } from './components/propositions/propositions.co
 import { Edit_text_by_sectionsComponent } from './components/edit_text_by_sections/edit_text_by_sections.component';
 import { AuthGuardService } from './core/core.module';
 import { NameGuardService } from './core/auth/auth-guard.service';
+import { ExplicationsComponent } from './components/explications/explications.component';
+import { RemerciementComponent } from './components/remerciement/remerciement.component';
+import { MessageInterPhaseComponent } from './components/message-inter-phase/message-inter-phase.component';
+import { FromLinkComponent } from './components/from-link/from-link.component';
+import { AuthentificationComponent } from './components/authentification/authentification.component';
+import { EnregistrementComponent } from './components/enregistrement/enregistrement.component';
+import { ResetMotDePasseComponent } from './components/reset-mot-de-passe/reset-mot-de-passe.component';
+import { GoogleSheetComponent } from './components/google-sheet/google-sheet.component';
+import { ProjetImageComponent } from './components/projet-image/projet-image.component';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { ListDeCadeauxComponent } from './components/list-de-cadeaux/list-de-cadeaux.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'mode_d_emploi',
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    component: VersionOriginaleComponent
+    path: 'message',
+    component: MessageInterPhaseComponent
+  },
+  {
+    path: 'remerciement',
+    component: RemerciementComponent
+  },
+  {
+    path: 'mode_d_emploi',
+    component: ExplicationsComponent
   },
   {
     path: 'settings',
     component: SettingsContainerComponent
   },
   {
-    path: 'a',
+    //canActivate: [AuthGuardService],
+    path: 'admin_pl',
     component: AdminComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [NameGuardService]
   },
   {
-    path: 'propositions',
+    //canActivate: [AuthGuardService],
+    path: 'csv',
+    component: GoogleSheetComponent
+  },
+
+  {
+    path: 'Projet_de_loi',
     component: PropositionsComponent,
     canActivate: [NameGuardService]
+  },
+  {
+    path: 'logos',
+    component: ProjetImageComponent
   },
 
   {
     path: 'edit_text_by_section',
     component: Edit_text_by_sectionsComponent
   },
+  {
+    path: 'authentification',
+    component: AuthentificationComponent
+  },
+  {
+    path: 'enregistrement',
+    component: EnregistrementComponent
+  },
+  {
+    path: 'oublie_mot_de_passe',
+    component: ResetMotDePasseComponent
+  },
+  {
+    path: 'Upload_file',
+    component: UploadFileComponent
+  },
+  {
+    path: 'liste_de_cadeau',
+    component: ListDeCadeauxComponent
+  },
+
+  {
+    path: '__',
+    component: FromLinkComponent
+  },
 
   {
     path: '**',
-    redirectTo: 'home'
+    redirectTo: 'message'
   }
 ];
 
@@ -52,6 +107,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       useHash: true,
       scrollPositionRestoration: 'enabled',
+      enableTracing: true,
       preloadingStrategy: PreloadAllModules
     })
   ],

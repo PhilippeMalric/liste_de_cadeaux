@@ -29,8 +29,8 @@ describe('AppComponent', () => {
 
     store = TestBed.inject(MockStore);
     store.overrideSelector(selectIsAuthenticated, false);
-    store.overrideSelector(selectSettingsStickyHeader, true);
-    store.overrideSelector(selectSettingsLanguage, 'en');
+    store.overrideSelector(selectSettingsStickyHeader, false);
+    store.overrideSelector(selectSettingsLanguage, 'fr');
     store.overrideSelector(selectEffectiveTheme, 'default');
   }));
 

@@ -107,10 +107,22 @@ body {
   height: 84px;
 }
 .mat-simple-snackbar {
-  font-size: 40px;
+  font-size: 24px;
   width: fit-content;
+  line-height: 1.4 !important;
 }
 
 .red {
   color: red;
+}
+.mat-button.mat-primary:disabled {
+  color: rgb(77, 77, 69) !important;
+}
+
+.mat-button[disabled][disabled] {
+  color: rgb(77, 77, 69);
+}
+
+.center-text {
+  text-align: center !important;
 }

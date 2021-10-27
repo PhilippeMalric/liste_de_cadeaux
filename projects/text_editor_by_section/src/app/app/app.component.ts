@@ -23,7 +23,8 @@ import {
   selectSettingsStickyHeader,
   selectSettingsLanguage,
   selectEffectiveTheme,
-  selectRouterState
+  selectRouterState,
+  NotificationService
 } from '../core/core.module';
 import {
   actionSettingsChangeAnimationsPageDisabled,
@@ -40,7 +41,7 @@ import {
 import { Router, NavigationEnd } from '@angular/router';
 import { Link, Node, D3Service } from '../d3';
 
-import { take, tap } from 'rxjs/operators';
+import { take, tap, timeout } from 'rxjs/operators';
 
 import { ActionBottom_sheetUpsert } from '../bottom_sheet_state/bottom_sheet_state.actions';
 import { selectIsBS_opened } from '../bottom_sheet_state/bottom_sheet_state.selectors';
@@ -51,6 +52,7 @@ import { MatGridList } from '@angular/material/grid-list';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { start } from 'repl';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { GoogleAuthService } from '../core/auth/google-auth.service';
 // declare google analytics
 declare const ga: any;
 
@@ -66,10 +68,10 @@ export class AppComponent implements OnInit {
   version = env.versions.app;
   year = new Date().getFullYear();
   logo = require('../../assets/mini.png');
-  languages = ['en', 'fr'];
+  languages = ['fr'];
   navigation = [
-    { link: 'home', label: 'anms.menu.about' },
-    { link: 'propositions', label: 'anms.menu.game' }
+    { link: 'mode_d_emploi', label: 'anms.menu.about' },
+    { link: 'Projet_de_loi', label: 'anms.menu.game' }
   ];
   navigationSideMenu = [
     ...this.navigation,
@@ -89,6 +91,8 @@ export class AppComponent implements OnInit {
   displayName: string = '';
   subscription1: Subscription;
   isAuthenticated2: any;
+  large = true;
+
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     public dialog: MatDialog,
@@ -100,6 +104,8 @@ export class AppComponent implements OnInit {
     public _bottomSheet: MatBottomSheet,
     private d3service: D3Service,
     public gameService: GameService,
+    private notificationService: NotificationService,
+    private googleAuthService: GoogleAuthService,
     private dataService: DataService
   ) {
     console.log('App constructor!!');
@@ -116,11 +122,6 @@ export class AppComponent implements OnInit {
         this.changeDetectorRef.markForCheck();
       })
     );
-
-    this.gameService.getObservable().subscribe(data => {
-      console.log('data');
-      console.log(data);
-    });
   }
 
   private static isIEorEdgeOrSafari() {
@@ -128,10 +129,32 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    /*
+    setTimeout(()=>{
+      if(this.displayName == ""){
+        this.notificationService.success("Veuillez vous inscrire pour commencer.")
+      }
+     
+    },40000)
+
+    setTimeout(()=>{
+      if(this.displayName == ""){
+        this.notificationService.warn("Écrivez votre nom en haut, puis cliquez sur validez! (en haut à gauche pour les téléphones et tablettes)")
+      }
+     
+    },60000)
+
+    */
+    setTimeout(() => {
+      if (this.displayName == '') {
+        this.notificationService.default('Veuillez vous identifier');
+      }
+    }, 3000);
+
     this.gameService.user.next(this.displayName);
     this.subscription1 = this.gameService.user.subscribe(user => {
       this.navigation = this.navigation.map(nav => {
-        return { ...nav, enabled: nav.link == 'home' || user != '' };
+        return { ...nav, enabled: nav.link == 'mode_d_emploi' || user != '' };
       });
       this.navigationSideMenu = [
         ...this.navigation,
@@ -165,12 +188,18 @@ export class AppComponent implements OnInit {
 
   logOut2 = () => {
     this.gameService.user.next('');
-    this.router.navigate(['home']);
+    this.router.navigate(['mode_d_emploi']);
   };
 
   validez = () => {
-    this.gameService.user.next(this.displayName);
+    this.googleAuthService.signInLink(this.displayName);
+
+    //this.router.navigate(['projet_de_loi']);
   };
+
+  checkAuth() {
+    this.googleAuthService.checkAuth(this.displayName);
+  }
 
   ngAfterViewInit(): void {
     this.router.events.subscribe(event => {
@@ -182,6 +211,8 @@ export class AppComponent implements OnInit {
   }
 
   onLogoutClick() {
+    this.gameService.user.next('');
+    this.gameService.userEmail.next('');
     this.store.dispatch(new ActionAuthLogout());
   }
 

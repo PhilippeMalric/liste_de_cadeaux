@@ -1,0 +1,42 @@
+<div class="container">
+   
+    <div class="center">
+        <mat-card>
+            <mat-card-content>
+                <h2>Ajout d'un nom</h2>
+                <form class="my-form">
+                    <mat-form-field class="full-width">
+                      <mat-label>Nom</mat-label>
+                      <input type="text" matInput [formControl]="nomFormControl" 
+                             placeholder="Ex. pat@example.com">
+                      
+                      <mat-error *ngIf="!nomFormControl.hasError('required')">
+                        Entrez un nom valide
+                      </mat-error>
+                      <mat-error *ngIf="nomFormControl.hasError('required')">
+                        Le nom est  <strong>requis</strong>
+                      </mat-error>
+                    </mat-form-field>
+                   
+                  </form>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="onSubmit()">Ajoutez un nom</button>
+            </mat-card-actions>
+        </mat-card>
+       
+       
+    </div>
+    
+    <button 
+    *ngFor="let nom of noms" 
+
+    [ngClass]="{'selected':nom.selected}"
+     style="margin: 10px;" 
+     mat-raised-button 
+     
+     (click)='selection_nom(nom.nom)'>
+     {{nom.nom}}
+    </button> 
+</div>
+

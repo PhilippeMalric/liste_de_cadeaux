@@ -1,0 +1,16 @@
+<div class="center">
+  <h1 mat-dialog-title >Texte original</h1>
+  <div mat-dialog-content>
+      <p class="ori" >{{data.text}}</p>
+  </div>
+  <h2>Les propositions</h2>
+  <div *ngFor="let prop of data.props" class="inside_dialog_prop">
+    <!--<h3 style="margin-right: 20px;">{{prop.name}}</h3>-->
+    <p class=center-v>{{prop.txt}}</p>
+    <button mat-raised-button [ngClass]="{'approuve':true,'big_font':true}" color=primary (click)="approuve(data.nom,prop)">✔</button>
+    <button mat-raised-button [ngClass]="{'delete_prop':true,'big_font':true}" color=primary (click)="delete(data.nom,prop)">X</button>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button (click)="onNoClick()">Ok</button>
+  </div>
+</div>

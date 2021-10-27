@@ -1,0 +1,291 @@
+[
+  { "nom": "h1", "type": "header", "txt": "PRÉSENTATION" },
+
+  {
+    "nom": "p1_1",
+    "type": "p",
+    "txt": "L’Alliance pour une constituante citoyenne du Québec invite les membres de l’Assemblée nationale à adopter une loi créant une Assemblée constituante citoyenne chargée de rédiger la première constitution de l’histoire du Québec."
+  },
+  {
+    "nom": "p1_2",
+    "type": "p",
+    "txt": "Même si nous avons travaillé sur un projet de loi de convocation que nous révisons en ce moment, notre   association, l'ACCQ, propose ici l'énumération de principes qui devraient, selon nous, assurer que la rédaction de cette Loi fondamentale se réalisera dans un contexte vraiment démocratique."
+  },
+  {
+    "nom": "p1_3",
+    "type": "p",
+    "txt": "L’Assemblée constituante, non partisane, doit être libre dans ses délibérations et ses conclusions."
+  },
+  {
+    "nom": "p1_4",
+    "type": "p",
+    "txt": "Une fois ratifiée par voie de référendum, cette constitution deviendra exécutoire."
+  },
+
+  { "nom": "h2", "type": "header", "txt": "PRÉAMBULE" },
+
+  {
+    "nom": "p2_1",
+    "type": "p",
+    "txt": "Fondamentalement, c’est le peuple qui est le détenteur de la souveraineté nationale."
+  },
+  {
+    "nom": "p2_2",
+    "type": "p",
+    "txt": "La mise en place de cette Assemblée constituante citoyenne vise d’abord et avant tout à doter l’État québécois de sa première constitution démocratique afin de rassembler l’ensemble de la population autour d’un nouveau contrat social auquel elle accepte de se lier."
+  },
+  {
+    "nom": "p2_3",
+    "type": "p",
+    "txt": "De plus, la population n’a jamais participé ni n’a été consultée quant aux Lois fondamentales qui lui ont été imposées dans le temps. Depuis 1982, tous nos gouvernements refusent de signer la constitution canadienne. Bien que tous les partis politiques représentés à l’Assemblée nationale aient, dans leurs programmes, des demandes de changements majeurs aux relations entre le Canada et le Québec, aucun n’a réussi à faire changer quoi que ce soit à ce régime imposé.  En donnant à une Assemblée citoyenne le mandat de rédiger notre première constitution, les député·e·s permettraient au Québec de sortir de l’impasse et de forger des consensus nationaux par-delà les allégeances partisanes."
+  },
+
+  { "nom": "h3", "type": "header", "txt": "1- COMPOSITION" },
+
+  { "nom": "s3_1", "type": "s", "txt": "A. ADMISSIBILITÉ DES MEMBRES " },
+  {
+    "nom": "p3_2",
+    "type": "p",
+    "txt": "Toute personne candidate à la Constituante devrait être citoyenne canadienne, résider au Québec (critère actuel : 183 jours minimum par année), avoir 18 ans ou plus et être inscrite sur la liste électorale."
+  },
+  {
+    "nom": "p3_3",
+    "type": "p",
+    "txt": "Seraient non admissibles les personnes non pardonnées possédant un casier judiciaire actif. "
+  },
+  { "nom": "s3_4", "type": "s", "txt": "B.  SERMENT " },
+  
+  {
+    "nom": "p3_52",
+    "type": "p",
+    "txt": "Les personnes constituantes devraient prêter serment au peuple souverain du Québec."
+  },
+  {
+    "nom": "p3_5",
+    "type": "p",
+    "txt": "« Je (nom et prénom) jure que je serai loyal(e) envers le peuple du Québec et que j’exercerai mes fonctions de membre de l’Assemblée constituante citoyenne avec honnêteté et justice dans le respect du peuple du Québec. »"
+  },
+  { "nom": "s3_6", "type": "s", "txt": "C.  PARITÉ HOMME-FEMME" },
+  {
+    "nom": "p3_7",
+    "type": "p",
+    "txt": "Les mécanismes prévus par le texte de loi devraient garantir la parité homme-femme."
+  },
+  { "nom": "s3_8", "type": "s", "txt": "D. SÉLECTION PAR TIRAGE AU SORT" },
+  {
+    "nom": "p3_9",
+    "type": "p",
+    "txt": "Nous pensons qu’un processus ressemblant à une élection générale nuirait à la recherche de consensus citoyens; les personnes élues auraient trop tendance à prendre position en fonction des lignes de parti. De plus, un processus partisan élimine dans les faits les personnes issues des métiers les plus fréquents. C’est-à-dire, pour les hommes : camionneurs, employés du commerce de détail, gérants de magasin, menuisiers-charpentiers, cuisiniers. Et pour les femmes : secrétaires, vendeuses, caissières, éducatrices, infirmières. Enfin, pour éviter que la Constituante ne représente avant tout que les classes supérieures de la société, l’ACCQ préconise la nomination des personnes constituantes par tirage au sort, comme cela s’est fait pour un des meilleurs exemples internationaux, la rédaction de la constitution de l’Islande en 2011."
+  },
+ 
+  {
+    "nom": "s3_11",
+    "type": "s",
+    "txt": "E. REPRÉSENTATION RÉGIONALE ET NATIONALE"
+  },
+  {
+    "nom": "p3_12",
+    "type": "p",
+    "txt": "Un tirage au sort universel sans critère régional conduirait à un déséquilibre majeur du fait de la répartition géographique de la population québécoise. En effet, à elles seules, les régions administratives de Montréal, de Laval et de la Montérégie représentent 47,8 % de la population totale. Avec 0,5 % de la population dans le cas du Nord-du-Québec ou 1,1 % chacune dans le cas de la Gaspésie-Iles-de-la-Madeleine et de la Côte-Nord, les régions éloignées n’auraient pratiquement aucune chance d’accéder à la Constituante. Nous proposons donc un double tirage au sort qui assurera une représentation à la fois régionale et nationale."
+  },
+  {
+    "nom": "p3_13",
+    "type": "s",
+    "txt": "F. MANDATAIRE DU DOUBLE TIRAGE AU SORT"
+  },
+  {
+    "nom": "p3_14",
+    "type": "p",
+    "txt": "Nous proposons que l’Assemblée nationale confie le mandat de la sélection des personnes constituantes au Directeur général des élections du Québec (DGEQ) avec un budget adéquat."
+  },
+  { "nom": "s3_15", "type": "s", "txt": "G. PROCESSUS DU TIRAGE AU SORT" },
+  {
+    "nom": "p3_16",
+    "type": "p",
+    "txt": "Le DGEQ procéderait à deux (2) tirages au sort. Le premier tirage servirait à lancer un appel à candidatures par le biais d’un tirage au sort aléatoire à partir de la liste électorale. Il lui faudrait opter pour un échantillon suffisant. Les personnes intéressées pourront alors signifier, dans une réponse au DGEQ, leur candidature avec leur préférence pour la délégation nationale ou pour leur délégation régionale. Le DGEQ ferait un deuxième tirage au sort à partir des candidatures reçues pour pourvoir le nombre de postes masculins et féminins prévus pour la délégation nationale et pour chacune des dix-sept (17) régions administratives."
+  },
+
+  { "nom": "h4", "type": "header", "txt": "2 : MANDAT" },
+
+  {
+    "nom": "s4_1",
+    "type": "s",
+    "txt": "A-TRAVAIL DE L’ASSEMBLÉE CONSTITUANTE"
+  },
+  {
+    "nom": "p4_2",
+    "type": "p",
+    "txt": "a.  d’affirmer la prééminence de la souveraineté populaire;"
+  },
+  {
+    "nom": "p4_3",
+    "type": "p",
+    "txt": "b.  de définir les caractéristiques de l’État et de la citoyenneté québécoise ainsi que ses relations avec les Premières Nations et la minorité historique;"
+  },
+  {
+    "nom": "p4_4",
+    "type": "p",
+    "txt": "c.  d’énumérer les valeurs et les choix de société fondamentaux de la société québécoise dans les divers secteurs de la vie et des ressources collectives;"
+  },
+  {
+    "nom": "p4_5",
+    "type": "p",
+    "txt": "d.  de définir les droits humains en matière d’environnement, dont le droit à un environnement sain, l’accès à l’eau potable, le respect des écosystèmes, l’utilisation durable du territoire et de ses ressources;"
+  },
+  {
+    "nom": "p4_6",
+    "type": "p",
+    "txt": "e.  de décrire l’organisation des pouvoirs législatif, exécutif et judiciaire et les relations entre eux;"
+  },
+  {
+    "nom": "p4_7",
+    "type": "p",
+    "txt": "f.  de préciser les moyens par lesquels les citoyens pourront participer en permanence et de façon contraignante aux décisions qui les concernent, ainsi que les pouvoirs des citoyens sur le plan territorial;"
+  },
+  {
+    "nom": "p4_8",
+    "type": "p",
+    "txt": "g.  d’établir les modalités et le calendrier de l’entrée en vigueur de ces dispositions, y compris, le cas échéant, de celles modifiant les lois provinciales et fédérales;"
+  },
+  {
+    "nom": "p4_9",
+    "type": "p",
+    "txt": "h. de définir une procédure citoyenne d’amendement de la constitution pour les générations futures."
+  },
+  {
+    "nom": "s4_10",
+    "type": "s",
+    "txt": "B- CALENDRIER "
+  },
+  {
+    "nom": "p4_11",
+    "type": "p",
+    "txt": "Nous suggérons un mandat de deux (2) ans pour rédiger le projet de constitution, suivi d’une période ne dépassant pas six (6) mois pour tenir un référendum exécutoire pour ratification."
+  },
+  
+
+  { "nom": "h5", "type": "header", "txt": "3 : FONCTIONNEMENT" },
+  { "nom": "p5_1", "type": "s", "txt": "A- PROCÉDURE" },
+  {
+    "nom": "p5_2",
+    "type": "p",
+    "txt": "Il nous semble essentiel que l’Assemblée constituante reste maîtresse de ses propres procédures et de sa structure de travail, et ce, afin d’assurer son indépendance. Aussi, le rôle de l’Assemblée nationale devrait se limiter à la date de convocation de cette assemblée et à la nomination d’une présidence provisoire pour les premières séances. L’Assemblée constituante citoyenne devrait par la suite se choisir une présidence et préciser ses procédures."
+  },
+  { "nom": "p5_3", "type": "s", "txt": "B.    ABSENCES ET VACANCES" },
+  {
+    "nom": "p5_4",
+    "type": "p",
+    "txt": "Être membre de l’Assemblée constituante citoyenne est une activité à plein temps. La loi doit donc prévoir des procédures contre les personnes qui abuseraient du système. Nous suggérons qu’un comité des présences soit institué et que, sous réserve de ratification de ses décisions par l’Assemblée constituante, ce comité ait le pouvoir de suspendre certains paiements et, dans les cas les plus graves, d’ordonner l’expulsion définitive de la personne. Un mécanisme devrait également être prévu pour le cas de sièges devenus vacants (expulsion, démission, décès, incapacité permanente) pour que le DGEQ puisse rapidement nommer une personne remplaçante du même sexe et, le cas échéant, de la même région."
+  },
+  { "nom": "p5_5", "type": "s", "txt": "C. FINANCEMENT" },
+  {
+    "nom": "p5_6",
+    "type": "p",
+    "txt": "La démocratie a un prix. Le projet de loi devrait donc prévoir un budget adéquat pour le fonctionnement de la Constituante. L’Assemblée constituante citoyenne serait responsable de l’utilisation des fonds devant l’Assemblée nationale et ses dépenses devraient être contrôlées périodiquement par le Vérificateur général du Québec."
+  },
+  { "nom": "p5_8", "type": "s", "txt": "D. PRISE DE DÉCISIONS" },
+  {
+    "nom": "p5_9",
+    "type": "p",
+    "txt": "Une constitution se doit de jouir d’un taux d’approbation incontestable.  L’Assemblée constituante citoyenne devrait donc fonctionner le plus possible sur la base du consensus. Toutefois, il est probable que sur certains sujets, il n’y ait pas unanimité. Il ne nous semble pas suffisant que les différends soient tranchés à la majorité simple. C’est pourquoi nous proposons que chaque article inscrit au projet de constitution recueille l’assentiment d’au moins les deux tiers (2/3) des membres de l’Assemblée constituante. "
+  },
+  {
+    "nom": "p5_10",
+    "type": "p",
+    "txt": "En cas d’impasse en cours de mandat, l’Assemblée constituante citoyenne demanderait au gouvernement d’organiser un référendum national pour trancher les articles litigieux."
+  },
+  {
+    "nom": "p5_11",
+    "type": "s",
+    "txt": "E. DROITS ET ALLOCATIONS DES PERSONNES CONSTITUANTES"
+  },
+  {
+    "nom": "p5_12",
+    "type": "p",
+    "txt": "Trois principes nous semblent devoir guider cette question :"
+  },
+  {
+    "nom": "p5_13",
+    "type": "p",
+    "txt": "1. Niveau de compensation suffisamment élevé pour permettre à des citoyens à revenu modeste de devenir constituants tout en continuant à pouvoir faire face à leurs responsabilités financières"
+  },
+  {
+    "nom": "p5_14",
+    "type": "p",
+    "txt": "2. Garantie d’une réinsertion professionnelle sans pénalité à la fin du mandat de la Constituante."
+  },
+  {
+    "nom": "p5_15",
+    "type": "p",
+    "txt": "3. Nous pensons que les personnes constituantes devraient jouir des mêmes protections de base que les jurés."
+  },
+  {
+    "nom": "p5_16",
+    "type": "s",
+    "txt": "F. LANGUE DE TRAVAIL DE L'ASSEMBLÉE CONSTITUANTE"
+  },
+  {
+    "nom": "p5_172",
+    "type": "p",
+    "txt": "La langue de travail de l’Assemblée constituante citoyenne doit être la langue officielle du Québec. Les délibérations se déroulent dans cette langue et tous les documents soumis à son attention doivent être rédigés en français."
+  },
+  {
+    "nom": "p5_17",
+    "type": "p",
+    "txt": "Nous suggérons toutefois que les procédures de la constituante respectent les droits des minorités tel que définies par les lois et la jurisprudence. Cela veut dire que tout membre de l’Assemblée constituante dont le père ou la mère serait citoyen canadien et aurait reçu un enseignement primaire en anglais au Canada pourrait s’exprimer en langue anglaise et aurait droit, après préavis de sa part, à un service d’interprétation simultanée et de traduction des documents dans cette langue."
+  },
+  {
+    "nom": "p5_19",
+    "type": "p",
+    "txt": "Également, tout membre de l’Assemblée constituante citoyenne membre des Premières Nations ou d’une communauté inuite pourrait s’exprimer dans sa langue autochtone ou en langue anglaise et aurait droit, après préavis de sa part, à un service d’interprétation simultanée et de traduction des documents dans cette langue."
+  },
+  {
+    "nom": "p5_20",
+    "type": "p",
+    "txt": "Les membres de l’Assemblée constituante citoyenne auraient bien évidemment droit à un service d’interprétation simultanée dans la langue officielle du Québec à chaque séance où il serait prévu que d’autres langues soient également utilisées."
+  },
+  {
+    "nom": "p5_21",
+    "type": "p",
+    "txt": "En outre, l’Assemblée constituante citoyenne devrait fournir un service d’interprétation à ses membres souffrant d’un handicap de communication reconnu."
+  },
+  { "nom": "p5_22", "type": "s", "txt": "G. ACCESSIBILITÉ À L’INFORMATION" },
+  {
+    "nom": "p5_23",
+    "type": "p",
+    "txt": "Tous les documents validés relatifs aux travaux de la Constituante devraient être disponibles en tout temps."
+  },
+  { "nom": "p5_24", "type": "s", "txt": "H. PARTICIPATION CITOYENNE" },
+  {
+    "nom": "p5_25",
+    "type": "p",
+    "txt": "L’Assemblée constituante citoyenne devrait tenir des séries d’audiences publiques sur des thèmes de son choix afin de recueillir l’opinion de la population et forger des consensus sur les grands enjeux de la future constitution. Ces séries d’audiences se dérouleraient tant au niveau national que régional. Un rythme minimum de trois (3) séries d’audiences par an nous semble un objectif raisonnable."
+  },
+
+  {
+    "nom": "h6",
+    "type": "header",
+    "txt": "4 : RELATIONS AVEC LES PEUPLES ET NATIONS AUTOCHTONES"
+  },
+
+  {
+    "nom": "p6_1",
+    "type": "p",
+    "txt": "Des Inuits et des membres des Premières Nations pourront se porter candidats à l’Assemblée constituante citoyenne à titre individuel, mais cela ne résout pas l’ensemble de la question de la participation des peuples originaires au processus. En effet, ces populations jouissent de droits collectifs reconnus, tant au niveau international que national, droit qui doivent être respectés."
+  },
+  {
+    "nom": "p6_2",
+    "type": "p",
+    "txt": "C’est pourquoi nous recommandons qu’en conformité avec la Déclaration des Nations Unies sur les droits des peuples autochtones, l’Assemblée constituante citoyenne du Québec soit tenue de respecter, dans son projet de constitution, les droits fondamentaux des peuples autochtones du Québec, notamment leur droit inhérent à l’autodétermination et à l’autonomie gouvernementale ainsi que leurs droits territoriaux, issus ou non de traités."
+  },
+  {
+    "nom": "p6_3",
+    "type": "p",
+    "txt": "Ces droits impliquent qu’une fois la Constitution du Québec ratifiée par voie de référendum, le gouvernement du Québec devra engager de bonne foi des négociations de nation à nations avec les peuples autochtones afin de préciser leur place dans l’ordre constitutionnel québécois."
+  },
+  {
+    "nom": "p6_5",
+    "type": "p",
+    "txt": "Enfin, les nations et communautés autochtones qui le désireraient devraient pouvoir définir leur propre processus constituant."
+  }
+]
