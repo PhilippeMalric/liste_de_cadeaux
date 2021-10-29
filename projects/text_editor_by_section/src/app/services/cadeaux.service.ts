@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { BehaviorSubject } from 'rxjs';
 
 export class Cadeau {
   nom: any;
@@ -20,8 +21,13 @@ export class Cadeau {
 })
 export class CadeauxService {
   nomSelected = '';
-
-  constructor(private db: AngularFireDatabase) {}
+  nomSelected$: BehaviorSubject<string>;
+  constructor(private db: AngularFireDatabase) {
+    this.nomSelected$ = new BehaviorSubject<string>('');
+    this.nomSelected$.subscribe(data => {
+      this.nomSelected = data;
+    });
+  }
 
   get_cadeaux = () => {
     return this.db.object(`cadeaux/`).valueChanges();

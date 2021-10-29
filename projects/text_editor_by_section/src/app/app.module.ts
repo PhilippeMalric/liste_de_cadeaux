@@ -176,6 +176,8 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
 import { ListDeCadeauxComponent } from './components/list-de-cadeaux/list-de-cadeaux.component';
 import { NameSelectorComponent } from './components/name-selector/name-selector.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MaListeDeCadeauComponent } from './components/ma-liste-de-cadeau/ma-liste-de-cadeau.component';
+import { UserSelectionComponent } from './components/user-selection/user-selection.component';
 
 export class MyHammerConfig extends HammerGestureConfig {}
 
@@ -278,7 +280,9 @@ export class MyHammerConfig extends HammerGestureConfig {}
     GoogleSheetComponent,
     UploadFileComponent,
     ListDeCadeauxComponent,
-    NameSelectorComponent
+    NameSelectorComponent,
+    MaListeDeCadeauComponent,
+    UserSelectionComponent
   ],
   entryComponents: [
     EmailComponent,

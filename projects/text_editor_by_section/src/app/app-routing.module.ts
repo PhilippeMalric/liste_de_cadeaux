@@ -83,7 +83,8 @@ const routes: Routes = [
   },
   {
     path: 'Upload_file',
-    component: UploadFileComponent
+    component: UploadFileComponent,
+    canActivate: [NameGuardService]
   },
   {
     path: 'liste_de_cadeau',

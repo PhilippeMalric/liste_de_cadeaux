@@ -1,21 +1,28 @@
-<div style="display: flex;">
-    <mat-card style="margin: 10px;" class='my-card' *ngFor="let cadeau of cadeaux$|async">
-        <mat-card-header>
-    
-            <mat-card-title>
-    
-                {{cadeau.nom}}
-    
-            </mat-card-title>
-    
-            <mat-card-subtitle>
+<div>
 
-                {{cadeau.user}}
+    <mat-grid-list cols="2" rowHeight="400px" 
+    [ngStyle]="{'margin-top':'10px','margin-bottom':'10px'}"
+    >
+        <mat-grid-tile *ngFor="let cadeau of cadeaux">
+            <mat-card style="margin: 10px;" class='my-card'>
+                <mat-card-header>
+            
+                    <mat-card-title>
+            
+                        {{cadeau.nom}}
+            
+                    </mat-card-title>
+            
+                    <mat-card-subtitle>
 
-            </mat-card-subtitle>
-        </mat-card-header>
-    
-        <img mat-card-image [src]='cadeau.url'>
-    </mat-card>
+                        {{cadeau.user}}
+
+                    </mat-card-subtitle>
+                </mat-card-header>
+            
+                <img mat-card-image style="max-height: 200px;" [src]='cadeau.url'>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
 </div>
 
