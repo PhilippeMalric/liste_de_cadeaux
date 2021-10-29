@@ -1,0 +1,11 @@
+
+<button 
+*ngFor="let nom of noms" 
+
+[ngClass]="{'selected':nom.selected}"
+    style="margin: 10px;" 
+    mat-raised-button 
+    
+    (click)='selection_nom(nom.nom)'>
+    {{nom.nom}}
+</button> 

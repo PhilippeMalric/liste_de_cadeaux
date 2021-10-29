@@ -44,21 +44,18 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PropositionsComponent implements OnInit, OnDestroy {
-  
-
   small: boolean;
   scrollToTop() {
-    let top = document.getElementById("top")
-      if (top !== null) {
-        
-        top.scrollIntoView(true);
-        
-        top = null;
-      }
+    let top = document.getElementById('top');
+    if (top !== null) {
+      top.scrollIntoView(true);
+
+      top = null;
+    }
   }
   scrollContainer: any;
   @ViewChild('grid') grid: MatGridList;
-  @ViewChild('container') container : ElementRef;
+  @ViewChild('container') container: ElementRef;
   sections: Section[];
   section: Section;
   users: any;
@@ -71,6 +68,7 @@ export class PropositionsComponent implements OnInit, OnDestroy {
   isAuthenticated$: Observable<boolean>;
   data: unknown;
   userId: string;
+
   gridByBreakpoint = {
     xl: 3,
     lg: 3,
@@ -128,8 +126,6 @@ export class PropositionsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    
-    
     this.sections = [];
 
     this.userSubscription = this.gameService.user.subscribe((user: string) => {
@@ -166,11 +162,13 @@ export class PropositionsComponent implements OnInit, OnDestroy {
       Object.keys(sections).map(key => {
         sections[key].color = 'accent';
 
-        this.gameService.voir_props(sections[key].id,this.displayName).subscribe((data:any)=>{
-          if(data){sections[key].commentaire = data.prop}
-        })
-        
-
+        this.gameService
+          .voir_props(sections[key].id, this.displayName)
+          .subscribe((data: any) => {
+            if (data) {
+              sections[key].commentaire = data.prop;
+            }
+          });
       });
       this.sections = sections;
 
@@ -178,13 +176,10 @@ export class PropositionsComponent implements OnInit, OnDestroy {
 
       console.log('original');
       console.log(this.original);
-      this.changeDetectorRef.markForCheck()
+      this.changeDetectorRef.markForCheck();
     });
     this.isAuthenticated$ = this.store.pipe(select(selectIsAuthenticated));
   }
-
-
-
 
   updateColor = () => {
     Object.keys(this.sections).map(key => {
@@ -195,14 +190,12 @@ export class PropositionsComponent implements OnInit, OnDestroy {
   };
 
   clickNav = i => {
-    
     this.section_int = i;
     this.section = this.sections[this.section_int];
     this.updateColor();
   };
 
   openDialog(): void {
-    
     const dialogRef = this.dialog.open(DialogCommentaireSection, {
       width: '400px',
       data: { nouveau_text: this.section.commentaire, text: '' }
@@ -216,7 +209,11 @@ export class PropositionsComponent implements OnInit, OnDestroy {
       console.log(this.section.id);
       if (result && result != '') {
         let data = {};
-        data[this.displayName] = { delete: false,approuve: false, prop: result };
+        data[this.displayName] = {
+          delete: false,
+          approuve: false,
+          prop: result
+        };
         this.db.object(`propositions/${this.section.id}/`).update(data);
       }
     });
@@ -224,9 +221,9 @@ export class PropositionsComponent implements OnInit, OnDestroy {
 
   forward = () => {
     if (this.section_int != this.sections.length - 1) {
-      console.log("foward")
-      this.scrollToTop()
-      
+      console.log('foward');
+      this.scrollToTop();
+
       this.section_int = this.section_int + 1;
       this.section = this.sections[this.section_int];
       this.updateColor();
@@ -234,33 +231,30 @@ export class PropositionsComponent implements OnInit, OnDestroy {
   };
   back = () => {
     if (this.section_int != 0) {
-      console.log("back")
-      this.scrollToTop()
+      console.log('back');
+      this.scrollToTop();
       this.section_int = this.section_int - 1;
       this.section = this.sections[this.section_int];
       this.updateColor();
     }
   };
 
-  ngAfterViewInit(){
-    console.log("_view.element")
-    console.log(this._view.nativeElement.offsetWidth)
-
+  ngAfterViewInit() {
+    console.log('_view.element');
+    console.log(this._view.nativeElement.offsetWidth);
   }
 
   ngAfterContentInit() {
-
-    
     this.observableMedia.asObservable().subscribe((change: MediaChange[]) => {
       console.log('change');
       console.log(change);
-      
-      this.grid.cols = this.gridByBreakpoint[change[0].mqAlias]
-      console.log(change[0].mqAlias)
-      if(change[0].mqAlias == "sm" || change[0].mqAlias == "xs"){
-         this.small = true
-      }else{
-        this.small = false
+
+      this.grid.cols = this.gridByBreakpoint[change[0].mqAlias];
+      console.log(change[0].mqAlias);
+      if (change[0].mqAlias == 'sm' || change[0].mqAlias == 'xs') {
+        this.small = true;
+      } else {
+        this.small = false;
       }
       console.log('cols');
       //console.log(this.grid.cols)
@@ -268,11 +262,9 @@ export class PropositionsComponent implements OnInit, OnDestroy {
       this.ref.markForCheck();
     });
   }
-  remerciement = ()=>{
-
+  remerciement = () => {
     this.router.navigate(['remerciement']);
-
-  }
+  };
 
   is_dirty = (users: any) => {
     let new_items = {};
