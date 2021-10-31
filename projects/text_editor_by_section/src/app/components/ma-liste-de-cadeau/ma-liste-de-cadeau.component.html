@@ -1,4 +1,4 @@
-<mat-grid-list #grid cols="2" rowHeight="400px" [ngStyle]="{'margin-top':'10px','margin-bottom':'10px'}">
+<mat-grid-list #grid cols="2" rowHeight="500px" [ngStyle]="{'margin-top':'10px','margin-bottom':'10px'}">
     <mat-grid-tile *ngFor="let cadeau of cadeaux">
         <mat-card style="margin: 10px;" class='my-card' >
             <mat-card-header>
@@ -17,6 +17,11 @@
             </mat-card-header>
         
             <img mat-card-image style="max-height: 200px;" [src]='cadeau.url'>
+            <mat-card-actions>
+                <button mat-raised-button 
+                color=warn (click)="deleteCadeau(cadeau)">X</button>
+
+            </mat-card-actions>
         </mat-card>
     </mat-grid-tile>
 </mat-grid-list>

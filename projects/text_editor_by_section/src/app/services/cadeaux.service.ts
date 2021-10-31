@@ -37,6 +37,10 @@ export class CadeauxService {
     this.db.object(`cadeaux/${cadeau.nom}/`).update(cadeau);
   };
 
+  delete_cadeau = (cadeau: Cadeau) => {
+    this.db.object(`cadeaux/${cadeau.nom}/`).remove();
+  };
+
   get_noms = () => {
     return this.db.object(`noms/`).valueChanges();
   };

@@ -8,7 +8,7 @@ import {
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { MatGridList } from '@angular/material/grid-list';
 import { map, take } from 'rxjs/operators';
-import { CadeauxService } from '../../services/cadeaux.service';
+import { Cadeau, CadeauxService } from '../../services/cadeaux.service';
 
 @Component({
   selector: 'anms-ma-liste-de-cadeau',
@@ -89,5 +89,10 @@ export class MaListeDeCadeauComponent implements OnInit {
       //this.grid.rowHeight = this.gridByBreakpointH[change[0].mqAlias];
       //this.ref.markForCheck();
     });
+  }
+
+  deleteCadeau(cadeau:Cadeau){
+    this.cadeauxService.delete_cadeau(cadeau)
+    this.getCadeau(this.cadeauxService.nomSelected)
   }
 }
