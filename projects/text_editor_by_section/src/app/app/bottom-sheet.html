@@ -15,12 +15,18 @@
       <p>
         Pour me contacter, écrivez à malric.philippe@gmail.com
       </p>
-      <!--
-      <div class="center">
-        Les auteurs de la présente version sont : Philippe Malric et Louis Clapin
-      </div>
-      -->
       
+      <div class="center">
+        <button mat-raised-button  [routerLink]="'associate-email'"
+              routerLinkActive="active">
+              Association des courriels
+        </button>
+      </div>
+      
+      
+      
+
+
     <div style="margin:auto;width: fit-content;" style="margin-top:10px">
       <button  mat-raised-button color="primary" (click)="close()">Fermer</button>
     </div>

@@ -34,7 +34,7 @@ export class AuthentificationComponent implements OnInit {
 
   onSubmit() {
     //this.loading = true;
-    this.googleAuthService.loginEmain(this.emailFormControl.value, this.passwordFormControl.value)
+    this.googleAuthService.loginEmail(this.emailFormControl.value, this.passwordFormControl.value)
   }
 
   googleSignIn = ()=>{

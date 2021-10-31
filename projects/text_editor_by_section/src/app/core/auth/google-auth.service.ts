@@ -74,7 +74,7 @@ export class GoogleAuthService {
       });
   }
 
-  loginEmain = (email, password) => {
+  loginEmail = (email, password) => {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -236,7 +236,7 @@ export class GoogleAuthService {
   }
 
   setStatus(uid: string, status: string) {
-    const path = 'users2/' + uid;
+    const path = 'users/' + uid;
     const data = {
       status
     };
@@ -273,7 +273,7 @@ export class GoogleAuthService {
 
   private updateUserData({ uid, email, displayName, photoURL }: User) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
-      `users2/${uid}`
+      `users/${uid}`
     );
 
     const data = {
@@ -286,7 +286,7 @@ export class GoogleAuthService {
     return userRef.set(data, { merge: true });
   }
   setUserData(email: string, displayName: string, status: string, uid) {
-    const path = `users2/${uid}`;
+    const path = `users/${uid}`;
     const data = {
       status
     };
@@ -295,7 +295,7 @@ export class GoogleAuthService {
 
   get() {
     this.user$.pipe(take(1)).subscribe((user: User) => {
-      const path = `users2/${user.uid}`;
+      const path = `users/${user.uid}`;
 
       this.db
         .object(path)

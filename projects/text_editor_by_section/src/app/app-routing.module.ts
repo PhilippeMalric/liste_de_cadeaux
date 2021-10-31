@@ -20,6 +20,7 @@ import { GoogleSheetComponent } from './components/google-sheet/google-sheet.com
 import { ProjetImageComponent } from './components/projet-image/projet-image.component';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { ListDeCadeauxComponent } from './components/list-de-cadeaux/list-de-cadeaux.component';
+import { AssociateEmailComponent } from './components/associate-email/associate-email.component';
 
 const routes: Routes = [
   {
@@ -90,6 +91,12 @@ const routes: Routes = [
     path: 'liste_de_cadeau',
     component: ListDeCadeauxComponent
   },
+  {
+    path: 'associate-email',
+    component: AssociateEmailComponent,
+    canActivate: [NameGuardService]
+  },
+  
 
   {
     path: '__',

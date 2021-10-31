@@ -178,6 +178,7 @@ import { NameSelectorComponent } from './components/name-selector/name-selector.
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MaListeDeCadeauComponent } from './components/ma-liste-de-cadeau/ma-liste-de-cadeau.component';
 import { UserSelectionComponent } from './components/user-selection/user-selection.component';
+import { AssociateEmailComponent } from './components/associate-email/associate-email.component';
 
 export class MyHammerConfig extends HammerGestureConfig {}
 
@@ -282,7 +283,8 @@ export class MyHammerConfig extends HammerGestureConfig {}
     ListDeCadeauxComponent,
     NameSelectorComponent,
     MaListeDeCadeauComponent,
-    UserSelectionComponent
+    UserSelectionComponent,
+    AssociateEmailComponent
   ],
   entryComponents: [
     EmailComponent,
