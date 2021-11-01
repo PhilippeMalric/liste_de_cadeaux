@@ -6,7 +6,7 @@ import {
   AngularFirestore
 } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Router } from '@angular/router';
 import { User } from './user.model';
@@ -14,9 +14,10 @@ import { Store } from '@ngrx/store';
 import { ActionAuthLogin } from './auth.actions';
 import { LocalStorageService, NotificationService } from '../core.module';
 import { AUTH_KEY } from './auth.effects';
-import { take } from 'rxjs/operators';
+import { map, switchMap, take, tap } from 'rxjs/operators';
 import * as firebase from 'firebase';
 import { GameService } from '../../services/game.service';
+import { CadeauxService } from '../../services/cadeaux.service';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,7 @@ export class GoogleAuthService {
   user$: any;
 
   constructor(
+    private cadeauxService:CadeauxService,
     private notificationService: NotificationService,
     private gameService: GameService,
     private storageService: LocalStorageService,
@@ -36,6 +38,11 @@ export class GoogleAuthService {
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore
   ) {
+
+      
+    this.updateOnUser().subscribe();
+    this.updateOnDisconnect().subscribe();
+    this.updateOnAway();
     this.user$ = afAuth.authState;
 
     if (this.user$) {
@@ -43,6 +50,69 @@ export class GoogleAuthService {
     } else {
       this.logedIn = false;
     }
+  }
+  
+  get timestamp() {
+    return firebase.database.ServerValue.TIMESTAMP;
+  }
+
+  updateOnUser() {
+    const connection = this.db.object('.info/connected').valueChanges().pipe(
+      map(connected => connected ? 'online' : 'offline')
+    );
+
+    return this.afAuth.authState.pipe(
+      switchMap(user =>  user ? connection : of('offline')),
+      tap(status => this.setPresence(status))
+    );
+  }
+
+  updateOnDisconnect() {
+    return this.afAuth.authState.pipe(
+      tap(user => {
+        if (user) {
+            this.db.object(`users/${user.uid}`).query.ref.onDisconnect()
+            .update({
+              status: 'offline',
+              timestamp: this.timestamp
+          });
+          
+        }
+      })
+    );
+  }
+
+  updateOnAway() {
+    document.onvisibilitychange = (e) => {
+
+      if (document.visibilityState === 'hidden') {
+        this.setPresence('away');
+      } else {
+        this.setPresence('online');
+      }
+    };
+  }
+
+  setPresence(presence: string) {
+    console.log('setPresence',presence)
+    this.afAuth.currentUser.then(authState => {
+      if(authState){
+        let uid = authState.uid;
+        let displayName = authState.displayName
+        console.log(displayName)
+        if(displayName == null){
+          displayName = ('' + authState.email)
+          .split('@')[0]
+          .replace('.', '_')
+          .replace('#', '_')
+          .replace('$', '_')
+          .replace('[', '_')
+          .replace(']', '_')
+        }
+          this.setStatusAndName(uid,presence,displayName,authState.email)
+          this.cadeauxService.nomSelected$.next(displayName)
+      }
+    })
   }
 
   signInLink(email) {
@@ -238,10 +308,23 @@ export class GoogleAuthService {
   setStatus(uid: string, status: string) {
     const path = 'users/' + uid;
     const data = {
-      status
+      status,
+      timestamp: this.timestamp
     };
     this.db.object(path).update(data);
   }
+
+  setStatusAndName(uid: string, status: string, name: string,email: string) {
+    const path = 'users/' + uid;
+    const data = {
+      status,
+      name,
+      email,
+      timestamp: this.timestamp
+    };
+    this.db.object(path).update(data);
+  }
+
   googleSignIn() {
     const provider = new firebase.auth.GoogleAuthProvider().addScope('email');
     this.oAuthLogin(provider);

@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { ofType, createEffect, Actions } from '@ngrx/effects';
-import { tap } from 'rxjs/operators';
+import { take, tap } from 'rxjs/operators';
+import { GameService } from '../../services/game.service';
 
 import { LocalStorageService } from '../local-storage/local-storage.service';
 
@@ -23,6 +24,7 @@ export class AuthEffects {
     private localStorageService: LocalStorageService,
     private router: Router,
     private afAuth: AngularFireAuth,
+    private gameService: GameService
   ) {}
 
   logout = createEffect(
@@ -56,11 +58,7 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType<ActionAuthLogin>(AuthActionTypes.LOGIN),
         tap(() => {
-          this.afAuth.currentUser.then(authState => {
-            let uid = authState.uid;
-            const status = 'online';
-            this.googleAuth.setStatus(uid, status);
-          })
+          
           this.router.navigate(['Upload_file']);
         })
       ),
