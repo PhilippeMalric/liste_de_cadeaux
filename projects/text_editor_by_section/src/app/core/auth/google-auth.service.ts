@@ -224,7 +224,7 @@ export class GoogleAuthService {
     var actionCodeSettings = {
       // URL you want to redirect back to. The domain (www.example.com) for this
       // URL must be in the authorized domains list in the Firebase Console.
-      url: 'https://projet-de-loi-accq.web.app/authentification',
+      url: 'https://votoire-ec754.firebaseapp.com/authentification',
       //url: 'http://localhost:4200',
       // This must be true.
       handleCodeInApp: true
