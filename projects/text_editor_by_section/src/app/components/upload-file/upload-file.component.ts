@@ -57,7 +57,11 @@ export class UploadFileComponent implements OnInit {
         this.nomFormControl.value,
         this.imageUrl
       );
-      this.cadeauxService.add_cadeau(cadeau);
+      this.cadeauxService.add_cadeau(cadeau).then((data)=>{
+
+        
+
+      });
     } else {
       this.notificationService.error('Vous devez choisi un nom');
     }

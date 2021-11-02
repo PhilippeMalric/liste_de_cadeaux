@@ -34,7 +34,7 @@ export class CadeauxService {
   };
 
   add_cadeau = (cadeau: Cadeau) => {
-    this.db.object(`cadeaux/${cadeau.nom}/`).update(cadeau);
+    return this.db.object(`cadeaux/${cadeau.nom}/`).update(cadeau);
   };
 
   delete_cadeau = (cadeau: Cadeau) => {

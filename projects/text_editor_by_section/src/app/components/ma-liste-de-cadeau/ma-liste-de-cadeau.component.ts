@@ -52,7 +52,6 @@ export class MaListeDeCadeauComponent implements OnInit {
     this.cadeaux$ = this.cadeauxService
       .get_cadeaux()
       .pipe(
-        take(1),
         map((data: any) => {
           console.log(data);
           return Object.keys(data).map(key => {
